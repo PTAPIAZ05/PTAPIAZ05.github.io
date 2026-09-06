@@ -6,7 +6,7 @@
 :root{
   --paper:#FAFAF8;
   --paper-line:#EFEFEA;
-  --ink:#132A46;
+  --ink:#1C1F24;
   --navy:#132A46;
   --navy-dim:#0f1f2e;
   --steel:#6B7280;
@@ -50,7 +50,7 @@ img{max-width:100%; display:block;}
   margin:0 auto;
   padding:22px 28px 16px;
   display:grid;
-  grid-template-columns:1fr auto;
+  grid-template-columns:1fr;
   gap:16px;
   align-items:end;
 }
@@ -62,9 +62,10 @@ img{max-width:100%; display:block;}
 .tb-name a{text-decoration:none; color:var(--navy);}
 .tb-role{
   font-weight:500;
-  color:var(--sage);
+  color:var(--navy);
   font-size:0.95rem;
   margin-top:8px;
+  font-family:'Montserrat', sans-serif;
 }
 .tb-meta{
   text-align:right;
@@ -74,6 +75,7 @@ img{max-width:100%; display:block;}
   color:var(--steel);
   line-height:1.7;
   white-space:nowrap;
+  display:none;
 }
 .tb-meta .row{display:flex; justify-content:space-between; gap:14px;}
 .tb-meta .val{color:var(--navy); font-weight:600; margin-left:10px;}
@@ -145,6 +147,56 @@ section.sheet:nth-of-type(even){background-color:#F6F6F3;}
   font-size:0.95rem;
   max-width:64ch;
   margin:14px 0 34px;
+}
+
+/* ---------- Timeline Layout (Who I Am section) ---------- */
+.timeline-container{
+  position:relative;
+  padding:40px 0;
+}
+.timeline-line{
+  position:absolute;
+  left:50%;
+  top:0;
+  bottom:0;
+  width:2px;
+  background:var(--sage);
+  transform:translateX(-50%);
+}
+.timeline-card{
+  display:flex;
+  margin-bottom:40px;
+  width:calc(50% - 20px);
+}
+.timeline-card-top{
+  flex-direction:row;
+  justify-content:flex-end;
+  margin-right:auto;
+}
+.timeline-card-bottom{
+  flex-direction:row-reverse;
+  justify-content:flex-end;
+  margin-left:auto;
+}
+.timeline-card .card{
+  position:relative;
+  box-shadow:0 2px 8px rgba(0,0,0,0.08);
+  transition:all 0.3s ease;
+}
+.timeline-card .card:hover{
+  box-shadow:0 8px 16px rgba(19,42,70,0.1);
+  transform:translateY(-4px);
+}
+@media (max-width:768px){
+  .timeline-line{left:20px;}
+  .timeline-card,
+  .timeline-card-top,
+  .timeline-card-bottom{
+    width:calc(100% - 50px);
+    margin-left:60px !important;
+    margin-right:0 !important;
+  }
+  .timeline-card-bottom{flex-direction:row;}
 }
 
 /* ---------- Project / hobby cards with 3D projection hover ---------- */
@@ -379,7 +431,7 @@ footer .wrap{
 /* ---------- Responsive ---------- */
 @media (max-width:640px){
   .titleblock-inner{grid-template-columns:1fr; text-align:left;}
-  .tb-meta{border-left:none; padding-left:0; text-align:left; border-top:1px solid var(--grid); padding-top:10px;}
+  .tb-meta{border-left:none; padding-left:0; text-align:left; border-top:1px solid var(--grid); padding-top:10px; display:none;}
   .tb-meta .row{justify-content:flex-start;}
   .tb-meta .val{margin-left:auto;}
   
