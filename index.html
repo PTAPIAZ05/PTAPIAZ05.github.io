@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedro Tapia Zamora — Engineering Portfolio</title>
+<meta name="description" content="Mechanical engineering student portfolio — research, NDOT infrastructure work, coursework, and projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  :root{
+    --dusk-top:#0A1A2E;
+    --dusk-mid:#132A46;
+    --dusk-low:#24405f;
+    --dusk-horizon:#3c5d82;
+    --plant:#0e2038;
+    --plant-dark:#081524;
+    --plant-rim:#e7ecf1;
+    --steam:#e9edf0;
+    --mtn-far:#233c5e;
+    --mtn-near:#111f36;
+    --moon-core:#fdf6e3;
+    --title-blue:#4CC9F0;
+  }
+  html{scroll-snap-type:y proximity;}
+  .hero-scene{
+    position:relative;
+    width:100%;
+    height:100vh;
+    min-height:520px;
+    overflow:hidden;
+    background:var(--dusk-top);
+    scroll-snap-align:start;
+    user-select:none;
+    -webkit-user-select:none;
+  }
+  .layer{
+    position:absolute;
+    inset:-6% -6%;
+    will-change:transform;
+    transition:transform 0.15s ease-out;
+  }
+
+  /* Sky */
+  .layer-sky{
+    background:linear-gradient(180deg,
+      var(--dusk-top) 0%,
+      var(--dusk-mid) 55%,
+      var(--dusk-low) 82%,
+      var(--dusk-horizon) 100%);
+  }
+  .stars{position:absolute; inset:0; overflow:hidden;}
+  .star{
+    position:absolute;
+    width:2px; height:2px;
+    background:#fff;
+    border-radius:50%;
+    animation:twinkle 3.5s ease-in-out infinite;
+    opacity:0.6;
+  }
+  @keyframes twinkle{
+    0%,100%{opacity:0.15;}
+    50%{opacity:0.9;}
+  }
+  .moon{
+    position:absolute;
+    left:14%; top:16%;
+    width:86px; height:86px;
+    border-radius:50%;
+    background:radial-gradient(circle at 38% 35%, var(--moon-core) 0%, var(--moon-core) 40%, rgba(253,246,227,0) 72%);
+    box-shadow:0 0 50px 6px rgba(253,246,227,0.25);
+  }
+  .moon::before{
+    content:'';
+    position:absolute;
+    left:16px; top:14px;
+    width:14px; height:14px;
+    border-radius:50%;
+    background:rgba(180,170,150,0.35);
+  }
+  .moon::after{
+    content:'';
+    position:absolute;
+    left:44px; top:40px;
+    width:9px; height:9px;
+    border-radius:50%;
+    background:rgba(180,170,150,0.3);
+  }
+
+  /* Rocket */
+  .layer-rocket{right:14%; top:12%; left:auto; bottom:auto; inset:auto; width:64px; height:110px;}
+  .rocket-svg{width:100%; height:100%; display:block; animation:rocketFloat 5s ease-in-out infinite;}
+  @keyframes rocketFloat{
+    0%,100%{transform:translateY(0) rotate(-8deg);}
+    50%{transform:translateY(-14px) rotate(-8deg);}
+  }
+  .rocket-flame{animation:flameFlicker 0.35s ease-in-out infinite alternate;}
+  @keyframes flameFlicker{
+    from{opacity:0.6; transform:scaleY(0.85);}
+    to{opacity:1; transform:scaleY(1.1);}
+  }
+
+  /* Mountains */
+  .layer-mtn-far{bottom:0; top:auto; height:36%;}
+  .layer-mtn-near{bottom:0; top:auto; height:26%;}
+  .mtn-svg{width:100%; height:100%; display:block;}
+
+  /* Ground */
+  .layer-ground{
+    bottom:0; top:auto; height:14%;
+    background:
+      linear-gradient(var(--dusk-top), #050d17),
+      repeating-linear-gradient(90deg, rgba(231,236,241,0.08) 0 1px, transparent 1px 60px);
+  }
+
+  /* Plant */
+  .layer-plant{bottom:0; top:auto; height:52%;}
+  .plant-svg{width:100%; height:100%; display:block; overflow:visible;}
+  .tower-unit{cursor:pointer; outline:none; -webkit-tap-highlight-color:transparent;}
+  .tower-unit:focus{outline:none;}
+  .tower-unit:focus-visible{outline:2px dashed var(--plant-rim); outline-offset:6px;}
+
+  /* Ambient steam — always drifting, gentle */
+  .steam-ambient{
+    animation:driftUp 7s ease-in infinite;
+    opacity:0;
+  }
+  .steam-ambient.d2{animation-delay:2.3s;}
+  .steam-ambient.d3{animation-delay:4.6s;}
+
+  /* Extra steam — billows out on hover/focus/touch */
+  .steam-extra{
+    opacity:0;
+    transition:opacity 0.3s ease;
+    pointer-events:none;
+  }
+  .tower-unit:hover .steam-extra,
+  .tower-unit:focus .steam-extra,
+  .tower-unit.steam-active .steam-extra{
+    opacity:1;
+  }
+  .steam-extra > ellipse{
+    animation:driftUp 3.2s ease-out infinite;
+  }
+  .steam-extra.e2 > ellipse{animation-delay:0.35s;}
+  .steam-extra.e3 > ellipse{animation-delay:0.7s;}
+  .steam-extra.e4 > ellipse{animation-delay:1.05s;}
+
+  @keyframes driftUp{
+    0%{transform:translate(0,0) scale(0.55) rotate(0deg); opacity:0;}
+    12%{opacity:0.62;}
+    55%{opacity:0.42;}
+    100%{transform:translate(8px,-150px) scale(1.7) rotate(7deg); opacity:0;}
+  }
+
+  /* Title text */
+  .titletext{
+    position:absolute;
+    top:30%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    text-align:center;
+    z-index:10;
+    pointer-events:none;
+    animation:fadein 1.4s ease-out;
+    width:min(90%, 720px);
+    padding:36px 28px;
+  }
+  .titletext::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:radial-gradient(ellipse at center, rgba(5,13,23,0.55) 0%, rgba(5,13,23,0.25) 55%, rgba(5,13,23,0) 80%);
+    z-index:-1;
+    border-radius:50%;
+  }
+  @keyframes fadein{
+    from{opacity:0; transform:translate(-50%, -42%);}
+    to{opacity:1; transform:translate(-50%, -50%);}
+  }
+  .titletext h1{
+    margin:0;
+    font-family:'Montserrat', sans-serif;
+    font-size:clamp(2rem, 7vw, 4.6rem);
+    font-weight:900;
+    letter-spacing:0.04em;
+    color:var(--title-blue);
+    text-shadow:
+      0 2px 6px rgba(0,0,0,0.7),
+      0 8px 30px rgba(0,0,0,0.6);
+  }
+  .titletext .sub{
+    margin-top:14px;
+    font-family:'Montserrat', sans-serif;
+    font-size:clamp(0.95rem, 2.2vw, 1.3rem);
+    font-weight:600;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:#bfe6f7;
+    text-shadow:0 2px 10px rgba(0,0,0,0.65);
+  }
+
+  .scroll-cue{
+    position:absolute;
+    bottom:6%;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:10;
+    color:rgba(250,250,248,0.8);
+    font-family:'Montserrat', sans-serif;
+    font-size:0.8rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    text-align:center;
+    animation:bob 2.2s ease-in-out infinite;
+    pointer-events:none;
+  }
+  .scroll-cue .chevron{
+    display:block;
+    margin:8px auto 0;
+    width:14px; height:14px;
+    border-right:2px solid rgba(250,250,248,0.8);
+    border-bottom:2px solid rgba(250,250,248,0.8);
+    transform:rotate(45deg);
+  }
+  @keyframes bob{
+    0%,100%{transform:translate(-50%, 0);}
+    50%{transform:translate(-50%, 10px);}
+  }
+
+  .skip-link{
+    position:absolute;
+    top:20px; right:24px;
+    z-index:10;
+    color:rgba(250,250,248,0.65);
+    font-family:'Montserrat', sans-serif;
+    font-size:0.75rem;
+    letter-spacing:0.08em;
+    text-decoration:none;
+    border-bottom:1px solid rgba(250,250,248,0.3);
+    padding-bottom:2px;
+  }
+  .skip-link:hover{color:#FAFAF8; border-color:#FAFAF8;}
+
+  #main-content{scroll-snap-align:start;}
+  .hero-fade{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:12%;
+    background:linear-gradient(180deg, rgba(243,246,249,0) 0%, rgba(243,246,249,0.92) 100%);
+    pointer-events:none;
+    z-index:5;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-snap-type:none;}
+    .layer{transition:none;}
+    .titletext, .scroll-cue{animation:none !important; opacity:1;}
+    .steam-ambient, .steam-extra{animation:none !important;}
+    .rocket-svg, .rocket-flame{animation:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO SCENE ================= -->
+<div class="hero-scene" id="scene">
+
+  <a class="skip-link" href="#main-content">Skip to content ↓</a>
+
+  <div class="layer layer-sky" data-depth="0.02" id="sky">
+    <div class="stars" id="stars"></div>
+    <div class="moon"></div>
+  </div>
+
+  <div class="layer layer-rocket" data-depth="0.06">
+    <svg class="rocket-svg" viewBox="0 0 60 110" xmlns="http://www.w3.org/2000/svg">
+      <ellipse class="rocket-flame" cx="30" cy="98" rx="7" ry="14" fill="#F2C879" opacity="0.9"/>
+      <path d="M30,4 C42,20 46,42 46,66 L14,66 C14,42 18,20 30,4 Z" fill="var(--plant-rim)"/>
+      <path d="M14,66 L4,88 L16,80 Z" fill="var(--plant)"/>
+      <path d="M46,66 L56,88 L44,80 Z" fill="var(--plant)"/>
+      <rect x="14" y="66" width="32" height="10" fill="var(--plant)"/>
+      <circle cx="30" cy="34" r="8" fill="var(--dusk-mid)"/>
+    </svg>
+  </div>
+
+  <div class="layer layer-mtn-far" data-depth="0.04">
+    <svg class="mtn-svg" viewBox="0 0 1200 260" preserveAspectRatio="none">
+      <path d="M0,260 L0,150 L110,70 L230,140 L340,55 L460,135 L590,60 L720,145 L860,75 L990,150 L1120,95 L1200,130 L1200,260 Z" fill="var(--mtn-far)"/>
+    </svg>
+  </div>
+
+  <div class="layer layer-mtn-near" data-depth="0.08">
+    <svg class="mtn-svg" viewBox="0 0 1200 190" preserveAspectRatio="none">
+      <path d="M0,190 L0,120 L160,45 L300,110 L440,35 L600,115 L760,50 L920,120 L1060,65 L1200,100 L1200,190 Z" fill="var(--mtn-near)"/>
+    </svg>
+  </div>
+
+  <div class="layer layer-plant" data-depth="0.12">
+    <svg class="plant-svg" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMax meet">
+      <rect x="0" y="382" width="1200" height="38" fill="#050d17"/>
+
+      <defs>
+        <path id="towerBody" d="M320,382
+                 C300,330 315,270 355,232
+                 C332,205 328,175 340,148
+                 L480,148
+                 C492,175 488,205 465,232
+                 C505,270 520,330 500,382 Z"/>
+        <path id="towerRim" d="M340,148 L480,148"/>
+      </defs>
+
+      <!-- ============ LEFT TOWER ============ -->
+      <g class="tower-unit" tabindex="0" role="button" aria-label="Cooling tower — hover or focus for more steam">
+        <use href="#towerBody" transform="translate(-110,0)" fill="var(--plant)" stroke="var(--plant-dark)" stroke-width="2"/>
+        <use href="#towerRim" transform="translate(-110,0)" fill="none" stroke="var(--plant-rim)" stroke-width="4" stroke-linecap="round" opacity="0.85"/>
+
+        <g class="steam-ambient d1">
+          <ellipse cx="300" cy="134" rx="28" ry="17" fill="var(--steam)"/>
+          <ellipse cx="280" cy="120" rx="19" ry="13" fill="var(--steam)"/>
+          <ellipse cx="316" cy="122" rx="17" ry="12" fill="var(--steam)"/>
+        </g>
+        <g class="steam-ambient d3">
+          <ellipse cx="300" cy="134" rx="20" ry="13" fill="var(--steam)"/>
+        </g>
+
+        <g class="steam-extra e1">
+          <ellipse cx="300" cy="134" rx="36" ry="22" fill="var(--steam)"/>
+          <ellipse cx="272" cy="112" rx="23" ry="15" fill="var(--steam)"/>
+          <ellipse cx="326" cy="116" rx="22" ry="15" fill="var(--steam)"/>
+        </g>
+        <g class="steam-extra e2">
+          <ellipse cx="300" cy="134" rx="28" ry="17" fill="var(--steam)"/>
+          <ellipse cx="284" cy="102" rx="19" ry="12" fill="var(--steam)"/>
+        </g>
+        <g class="steam-extra e3">
+          <ellipse cx="300" cy="134" rx="24" ry="15" fill="var(--steam)"/>
+        </g>
+      </g>
+
+      <!-- ============ RIGHT TOWER (identical shape) ============ -->
+      <g class="tower-unit" tabindex="0" role="button" aria-label="Cooling tower — hover or focus for more steam">
+        <use href="#towerBody" transform="translate(490,0)" fill="var(--plant)" stroke="var(--plant-dark)" stroke-width="2"/>
+        <use href="#towerRim" transform="translate(490,0)" fill="none" stroke="var(--plant-rim)" stroke-width="4" stroke-linecap="round" opacity="0.85"/>
+
+        <g class="steam-ambient d2">
+          <ellipse cx="900" cy="134" rx="28" ry="17" fill="var(--steam)"/>
+          <ellipse cx="880" cy="120" rx="19" ry="13" fill="var(--steam)"/>
+          <ellipse cx="916" cy="122" rx="17" ry="12" fill="var(--steam)"/>
+        </g>
+        <g class="steam-ambient d1">
+          <ellipse cx="900" cy="134" rx="20" ry="13" fill="var(--steam)"/>
+        </g>
+
+        <g class="steam-extra e4">
+          <ellipse cx="900" cy="134" rx="36" ry="22" fill="var(--steam)"/>
+          <ellipse cx="872" cy="112" rx="23" ry="15" fill="var(--steam)"/>
+          <ellipse cx="926" cy="116" rx="22" ry="15" fill="var(--steam)"/>
+        </g>
+        <g class="steam-extra e1">
+          <ellipse cx="900" cy="134" rx="28" ry="17" fill="var(--steam)"/>
+          <ellipse cx="884" cy="102" rx="19" ry="12" fill="var(--steam)"/>
+        </g>
+        <g class="steam-extra e2">
+          <ellipse cx="900" cy="134" rx="24" ry="15" fill="var(--steam)"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <div class="layer layer-ground" data-depth="0.2"></div>
+
+  <div class="hero-fade"></div>
+
+  <div class="titletext">
+    <h1>PEDRO TAPIA ZAMORA</h1>
+    <div class="sub">Engineering Portfolio</div>
+  </div>
+
+  <div class="scroll-cue">
+    <span>Scroll to explore</span>
+    <span class="chevron"></span>
+  </div>
+
+</div>
+
+<script>
+  // Generate a modest field of stars once, at random positions.
+  (function(){
+    var starsEl = document.getElementById('stars');
+    var count = window.innerWidth < 640 ? 40 : 80;
+    for (var i = 0; i < count; i++){
+      var s = document.createElement('div');
+      s.className = 'star';
+      s.style.left = (Math.random()*100) + '%';
+      s.style.top = (Math.random()*60) + '%';
+      s.style.animationDelay = (Math.random()*3.5) + 's';
+      starsEl.appendChild(s);
+    }
+  })();
+
+  // Mouse-driven parallax: each .layer moves opposite the cursor,
+  // scaled by its own data-depth so farther layers move less.
+  (function(){
+    var scene = document.getElementById('scene');
+    var layers = document.querySelectorAll('.layer');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+
+    function handleMove(clientX, clientY){
+      var rect = scene.getBoundingClientRect();
+      var relX = (clientX - rect.left) / rect.width - 0.5;
+      var relY = (clientY - rect.top) / rect.height - 0.5;
+      layers.forEach(function(layer){
+        var depth = parseFloat(layer.getAttribute('data-depth')) || 0;
+        var moveX = relX * depth * 100;
+        var moveY = relY * depth * 60;
+        layer.style.transform = 'translate(' + (-moveX) + 'px,' + (-moveY) + 'px)';
+      });
+    }
+
+    scene.addEventListener('mousemove', function(e){
+      handleMove(e.clientX, e.clientY);
+    });
+    scene.addEventListener('touchmove', function(e){
+      if (e.touches && e.touches[0]){
+        handleMove(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, {passive:true});
+    scene.addEventListener('mouseleave', function(){
+      layers.forEach(function(layer){ layer.style.transform = 'translate(0,0)'; });
+    });
+  })();
+
+  // Touch devices have no :hover — tap a tower to trigger extra steam briefly.
+  (function(){
+    document.querySelectorAll('.tower-unit').forEach(function(tower){
+      tower.addEventListener('touchstart', function(e){
+        e.stopPropagation();
+        tower.classList.add('steam-active');
+        setTimeout(function(){ tower.classList.remove('steam-active'); }, 1400);
+      }, {passive:true});
+    });
+  })();
+</script>
+
+
+<!-- ================= MAIN SITE CONTENT ================= -->
+<div id="main-content">
+
+<div class="titleblock">
+  <div class="titleblock-inner">
+    <div>
+      <h1 class="tb-name"><a href="index.html">PEDRO TAPIA ZAMORA</a></h1>
+      <div class="tb-role"><strong>Mechanical Engineering Student — Energy Technologies · Aerospace · Infrastructure & Structures</strong></div>
+    </div>
+  </div>
+</div>
+
+<nav class="index">
+  <div class="wrap">
+    <a href="index.html" class="current"><span class="num">01</span>HOME</a>
+    <a href="hobbies.html"><span class="num">02</span>HOBBIES</a>
+    <a href="projects.html"><span class="num">03</span>PROJECTS</a>
+    <a href="contact.html"><span class="num">04</span>CONTACT</a>
+  </div>
+</nav>
+
+<!-- ================= MISSION ================= -->
+<section class="sheet plain">
+  <div class="wrap">
+    <div style="display:grid; grid-template-columns:1.3fr 1fr; gap:40px; align-items:start;">
+      <div>
+        <div class="sheet-header">
+          <span class="sheet-num">00</span>
+          <h2>Mission</h2>
+        </div>
+        <p style="font-size:1.05rem; max-width:60ch; margin-top:20px;">
+          Mechanical Engineering Junior at Boston University concentrating in Energy Technologies & Sustainability with a minor in Mathematics. I am driven to save the world by improving access to renewable energy and creating sustainable solutions for infrastructure challenges.
+        </p>
+        <p style="max-width:60ch;">
+          At heart I am a problem solver who thinks creatively to build innovative solutions. I combine rigorous analysis with hands-on field experience to deliver engineering work that makes a real impact.
+        </p>
+        <a href="projects.html" class="btn sage" style="margin-top:10px;">View the Work</a>
+      </div>
+
+      <div class="photo-slot tall">
+        <img class="photo" src="images/portrait.jpg" alt="Portrait photo"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="photo-fallback">Drop images/portrait.jpg here — a portrait or a photo of you at work/in the field</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHO I AM ================= -->
+<section class="sheet">
+  <div class="wrap">
+    <div class="sheet-header">
+      <span class="sheet-num">01</span>
+      <h2>Who I Am</h2>
+    </div>
+    <p class="sheet-sub">The background behind the work.</p>
+
+    <div class="timeline-container">
+      <div class="timeline-line"></div>
+
+      <div class="timeline-card timeline-card-top">
+        <div class="card">
+          <div class="no">BACKGROUND</div>
+          <h3>Where you're from / based</h3>
+          <p>Placeholder — where you grew up, where you're based now, and how that shaped your interest in engineering.</p>
+        </div>
+      </div>
+
+      <div class="timeline-card timeline-card-bottom">
+        <div class="card">
+          <div class="no">EDUCATION</div>
+          <h3>Academic path</h3>
+          <p>Placeholder — your program, expected graduation, and any focus areas or minors.</p>
+        </div>
+      </div>
+
+      <div class="timeline-card timeline-card-top">
+        <div class="card">
+          <div class="no">EXPERIENCE</div>
+          <h3>Where you've worked</h3>
+          <p>Placeholder — NDOT internship and any other roles, one line each.</p>
+        </div>
+      </div>
+
+      <div class="timeline-card timeline-card-bottom">
+        <div class="card">
+          <div class="no">WHAT'S NEXT</div>
+          <h3>Where you're headed</h3>
+          <p>Placeholder — the kind of full-time role or program you're aiming for.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Drawn up as a working draft — content pending.</span>
+    <span><a href="contact.html">Get in touch →</a></span>
+  </div>
+</footer>
+
+</div><!-- /#main-content -->
+
+</body>
+</html>
