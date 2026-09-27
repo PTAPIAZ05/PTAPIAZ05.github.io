@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+  // Runs first, synchronously, so there is no flash of the wrong view.
+  // A real browser "reload" of THIS page clears the flag, so the splash
+  // shows again on refresh. Ordinary link navigation within the site does
+  // not reload this document, so the flag (and the skip) persists for the
+  // rest of the browser tab/session.
+  (function(){
+    var navType = null;
+    try{
+      var entries = performance.getEntriesByType && performance.getEntriesByType('navigation');
+      if (entries && entries[0]) navType = entries[0].type;
+      else if (performance.navigation) navType = ['navigate','reload','back_forward'][performance.navigation.type] || null;
+    }catch(e){}
+    if (navType === 'reload'){
+      try{ sessionStorage.removeItem('ptz-entered'); }catch(e){}
+    }
+    var entered = false;
+    try{ entered = sessionStorage.getItem('ptz-entered') === '1'; }catch(e){}
+    if (entered){ document.documentElement.classList.add('ptz-entered'); }
+  })();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedro Tapia Zamora — Engineering Portfolio</title>
+<meta name="description" content="Mechanical engineering student portfolio — research, NDOT infrastructure work, coursework, and projects.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<noscript><style>#main-content{display:block !important;} .hero-scene{display:none !important;}</style></noscript>
+<style>
+  :root{
+    --space-top:#04060f;
+    --space-mid:#0a0f22;
+    --space-low:#121a33;
+    --rocket-body:#e7ecf1;
+    --rocket-dark:#0e2038;
+    --flame:#F2C879;
+    --title-blue:#2E6DA4;
+    --iss-body:#d7dee6;
+    --iss-panel:#1f3a5c;
+  }
+  html{scroll-snap-type:y proximity;}
+
+  /* ---- Splash / home gate ---- */
+  #main-content{display:none;}
+  html.ptz-entered #main-content{display:block;}
+  html.ptz-entered .hero-scene{display:none;}
+
+  .hero-scene{
+    position:relative;
+    width:100%;
+    height:100vh;
+    min-height:520px;
+    overflow:hidden;
+    background:var(--space-top);
+    scroll-snap-align:start;
+    user-select:none;
+    -webkit-user-select:none;
+  }
+  .layer{
+    position:absolute;
+    inset:-6% -6%;
+    will-change:transform;
+    transition:transform 0.15s ease-out;
+  }
+
+  /* Deep space background */
+  .layer-sky{
+    background:radial-gradient(ellipse at 30% 20%, var(--space-low) 0%, var(--space-mid) 45%, var(--space-top) 100%);
+  }
+  .stars{position:absolute; inset:0; overflow:hidden;}
+  .star{
+    position:absolute;
+    width:2px; height:2px;
+    background:#fff;
+    border-radius:50%;
+    animation:twinkle 3.5s ease-in-out infinite;
+    opacity:0.6;
+  }
+  @keyframes twinkle{
+    0%,100%{opacity:0.15;}
+    50%{opacity:0.9;}
+  }
+
+  /* Moon */
+  .moon{
+    position:absolute;
+    left:9%; top:14%;
+    width:64px; height:64px;
+    border-radius:50%;
+    background:radial-gradient(circle at 38% 35%, #fdf6e3 0%, #fdf6e3 38%, rgba(253,246,227,0) 72%);
+    box-shadow:0 0 40px 5px rgba(253,246,227,0.2);
+  }
+  .moon::before{
+    content:'';
+    position:absolute; left:12px; top:11px;
+    width:10px; height:10px; border-radius:50%;
+    background:rgba(180,170,150,0.35);
+  }
+  .moon::after{
+    content:'';
+    position:absolute; left:33px; top:30px;
+    width:7px; height:7px; border-radius:50%;
+    background:rgba(180,170,150,0.3);
+  }
+
+  /* Main planet — a ringed gas giant, replaces the old Earth */
+  .planet-main{
+    position:absolute;
+    right:-9%; bottom:-15%;
+    width:min(42vw, 500px);
+    aspect-ratio:1/1;
+    border-radius:50%;
+    background:
+      radial-gradient(circle at 30% 26%, rgba(255,255,255,0.2), transparent 40%),
+      repeating-radial-gradient(circle at 50% 50%, #d9a86c 0%, #c68f52 6%, #e2b57c 12%),
+      radial-gradient(circle at 45% 45%, #caa06a 0%, #96703f 68%, #4d3218 100%);
+    box-shadow:
+      inset -30px -22px 70px rgba(0,0,0,0.55),
+      0 0 70px 12px rgba(214,164,100,0.2);
+  }
+  .planet-main .ring{
+    position:absolute;
+    left:50%; top:48%;
+    width:152%; height:32%;
+    border:9px solid rgba(232,205,160,0.55);
+    border-radius:50%;
+    transform:translate(-50%,-50%) rotate(-13deg);
+    box-shadow:0 0 22px rgba(232,205,160,0.22);
+    pointer-events:none;
+  }
+
+  /* Small rust-red planet, upper right */
+  .planet-rust{
+    position:absolute;
+    right:10%; top:9%;
+    width:52px; height:52px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #e8916a 0%, #c1603a 55%, #6f3018 100%);
+    box-shadow:inset -8px -8px 16px rgba(0,0,0,0.45), 0 0 22px 4px rgba(193,96,58,0.25);
+  }
+
+  /* Small icy blue-green planet, left side */
+  .planet-ice{
+    position:absolute;
+    left:6%; top:56%;
+    width:44px; height:44px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #cdeff0 0%, #6fc6c9 50%, #29666b 100%);
+    box-shadow:inset -6px -6px 14px rgba(0,0,0,0.4), 0 0 18px 4px rgba(111,198,201,0.25);
+  }
+
+  /* ISS — drifts slowly on its own */
+  .layer-iss{top:36%; left:16%; bottom:auto; right:auto; inset:auto; width:96px; height:40px;}
+  .iss-svg{width:100%; height:100%; display:block; animation:issDrift 14s ease-in-out infinite;}
+  @keyframes issDrift{
+    0%,100%{transform:translate(0,0) rotate(0deg);}
+    50%{transform:translate(26px,-10px) rotate(2deg);}
+  }
+
+  /* Second satellite — a small solar probe, independent drift */
+  .layer-probe{top:14%; right:26%; left:auto; bottom:auto; inset:auto; width:58px; height:32px;}
+  .probe-svg{width:100%; height:100%; display:block; animation:probeDrift 17s ease-in-out infinite;}
+  @keyframes probeDrift{
+    0%,100%{transform:translate(0,0) rotate(0deg);}
+    50%{transform:translate(-22px,15px) rotate(-5deg);}
+  }
+
+  /* Rocket — mouse-controlled */
+  .rocket{
+    position:absolute;
+    left:0; top:0;
+    width:44px; height:78px;
+    z-index:6;
+    transform:translate(50vw, 52vh);
+  }
+  .rocket-svg{width:100%; height:100%; display:block; overflow:visible;}
+  .rocket-flame{animation:flameFlicker 0.3s ease-in-out infinite alternate; transform-origin:center top;}
+  @keyframes flameFlicker{
+    from{opacity:0.6; transform:scaleY(0.85);}
+    to{opacity:1; transform:scaleY(1.15);}
+  }
+
+  /* Title text */
+  .titletext{
+    position:absolute;
+    top:28%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    text-align:center;
+    z-index:10;
+    pointer-events:none;
+    animation:fadein 1.4s ease-out;
+    width:min(92%, 760px);
+    padding:36px 28px;
+  }
+  .titletext::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:radial-gradient(ellipse at center, rgba(4,6,15,0.55) 0%, rgba(4,6,15,0.25) 55%, rgba(4,6,15,0) 80%);
+    z-index:-1;
+    border-radius:50%;
+  }
+  @keyframes fadein{
+    from{opacity:0; transform:translate(-50%, -42%);}
+    to{opacity:1; transform:translate(-50%, -50%);}
+  }
+  .titletext h1.grad-title{
+    margin:0;
+    font-family:'Space Grotesk', sans-serif;
+    font-size:clamp(1.7rem, 6.2vw, 3.4rem);
+    font-weight:700;
+    letter-spacing:0.03em;
+    line-height:1.18;
+    background:linear-gradient(180deg, #cfe6ff 0%, #4FA3FF 32%, var(--title-blue) 60%, #0c2846 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    filter:drop-shadow(0 8px 26px rgba(0,0,0,0.65));
+  }
+  .titletext h1.grad-title span{
+    display:block;
+    margin-top:12px;
+    font-size:0.46em;
+    letter-spacing:0.16em;
+    background:linear-gradient(180deg, #9fc7ec 0%, var(--title-blue) 55%, #0a2038 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  .enter-cta{
+    position:absolute;
+    bottom:8%;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:10;
+    text-align:center;
+  }
+  .enter-cta .btn{
+    font-size:1.05rem;
+    padding:14px 32px;
+    box-shadow:0 0 34px rgba(67,217,199,0.3);
+    border:none;
+  }
+  .enter-hint{
+    margin-top:12px;
+    font-family:'Space Grotesk', sans-serif;
+    font-size:0.75rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:rgba(185,214,245,0.6);
+  }
+
+  .skip-link{
+    position:absolute;
+    top:20px; right:24px;
+    z-index:10;
+    color:rgba(185,214,245,0.65);
+    font-family:'Space Grotesk', sans-serif;
+    font-size:0.75rem;
+    letter-spacing:0.08em;
+    text-decoration:none;
+    border-bottom:1px solid rgba(185,214,245,0.3);
+    padding-bottom:2px;
+  }
+  .skip-link:hover{color:#EAF3FF; border-color:#EAF3FF;}
+
+  #main-content{scroll-snap-align:start;}
+  .hero-fade{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:12%;
+    background:linear-gradient(180deg, rgba(5,7,13,0) 0%, rgba(5,7,13,0.94) 100%);
+    pointer-events:none;
+    z-index:5;
+  }
+
+  /* ---- Mini space animation for the home-page header & footer ---- */
+  .titleblock.space-header,
+  footer.space-footer{
+    position:relative;
+    overflow:hidden;
+  }
+  .titleblock.space-header::before{
+    content:'';
+    position:absolute; inset:0;
+    background:radial-gradient(ellipse at 22% 10%, #101d38 0%, #05070d 72%);
+    z-index:0;
+  }
+  footer.space-footer::before{
+    content:'';
+    position:absolute; inset:0;
+    background:radial-gradient(ellipse at 78% 90%, #101d38 0%, #05070d 72%);
+    z-index:0;
+  }
+  .titleblock.space-header .titleblock-inner,
+  footer.space-footer .wrap{
+    position:relative;
+    z-index:2;
+  }
+  .mini-stars{position:absolute; inset:0; overflow:hidden; z-index:0; pointer-events:none;}
+  .mini-star{
+    position:absolute;
+    width:2px; height:2px;
+    background:#cfe4ff;
+    border-radius:50%;
+    opacity:0.5;
+    animation:miniTwinkle 3.2s ease-in-out infinite;
+  }
+  @keyframes miniTwinkle{0%,100%{opacity:0.15;} 50%{opacity:0.9;}}
+  .mini-rocket{position:absolute; width:22px; height:38px; z-index:1; pointer-events:none;}
+  .titleblock .mini-rocket{top:20%; left:80%; animation:miniFloatA 11s ease-in-out infinite;}
+  footer .mini-rocket{top:28%; left:10%; animation:miniFloatB 13s ease-in-out infinite;}
+  @keyframes miniFloatA{
+    0%{transform:translate(0,0) rotate(-8deg);}
+    30%{transform:translate(-56px,14px) rotate(6deg);}
+    60%{transform:translate(-104px,-8px) rotate(-10deg);}
+    100%{transform:translate(0,0) rotate(-8deg);}
+  }
+  @keyframes miniFloatB{
+    0%{transform:translate(0,0) rotate(6deg);}
+    35%{transform:translate(66px,-15px) rotate(-8deg);}
+    70%{transform:translate(112px,9px) rotate(4deg);}
+    100%{transform:translate(0,0) rotate(6deg);}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-snap-type:none;}
+    .layer{transition:none;}
+    .titletext{animation:none !important; opacity:1;}
+    .iss-svg, .rocket-flame, .probe-svg, .mini-rocket, .mini-star{animation:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO / FRONT PAGE ================= -->
+<div class="hero-scene" id="scene">
+
+  <a class="skip-link enter-trigger" href="#main-content">Skip to content ↓</a>
+
+  <div class="layer layer-sky" data-depth="0.02" id="sky">
+    <div class="stars" id="stars"></div>
+    <div class="moon"></div>
+  </div>
+
+  <div class="planet-rust"></div>
+  <div class="planet-ice"></div>
+
+  <div class="planet-main" id="planet-main">
+    <div class="ring"></div>
+  </div>
+
+  <div class="layer layer-iss" data-depth="0.05" id="iss">
+    <svg class="iss-svg" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+      <rect x="4" y="20" width="52" height="40" fill="var(--iss-panel)" stroke="var(--iss-body)" stroke-width="1.5"/>
+      <line x1="17" y1="20" x2="17" y2="60" stroke="var(--iss-body)" stroke-width="1"/>
+      <line x1="30" y1="20" x2="30" y2="60" stroke="var(--iss-body)" stroke-width="1"/>
+      <line x1="43" y1="20" x2="43" y2="60" stroke="var(--iss-body)" stroke-width="1"/>
+      <rect x="144" y="20" width="52" height="40" fill="var(--iss-panel)" stroke="var(--iss-body)" stroke-width="1.5"/>
+      <line x1="157" y1="20" x2="157" y2="60" stroke="var(--iss-body)" stroke-width="1"/>
+      <line x1="170" y1="20" x2="170" y2="60" stroke="var(--iss-body)" stroke-width="1"/>
+      <line x1="183" y1="20" x2="183" y2="60" stroke="var(--iss-body)" stroke-width="1"/>
+      <rect x="56" y="36" width="88" height="8" fill="var(--iss-body)"/>
+      <rect x="80" y="26" width="40" height="28" rx="4" fill="var(--iss-body)"/>
+      <rect x="70" y="34" width="12" height="12" fill="var(--iss-body)"/>
+      <rect x="118" y="34" width="12" height="12" fill="var(--iss-body)"/>
+    </svg>
+  </div>
+
+  <div class="layer layer-probe" data-depth="0.06" id="probe">
+    <svg class="probe-svg" viewBox="0 0 160 90" xmlns="http://www.w3.org/2000/svg">
+      <rect x="66" y="34" width="28" height="22" rx="3" fill="var(--iss-body)"/>
+      <circle cx="80" cy="24" r="9" fill="none" stroke="var(--iss-body)" stroke-width="2.5"/>
+      <line x1="80" y1="34" x2="80" y2="26" stroke="var(--iss-body)" stroke-width="2"/>
+      <rect x="4" y="30" width="56" height="30" fill="var(--iss-panel)" stroke="var(--iss-body)" stroke-width="1.5"/>
+      <rect x="100" y="30" width="56" height="30" fill="var(--iss-panel)" stroke="var(--iss-body)" stroke-width="1.5"/>
+    </svg>
+  </div>
+
+  <div class="rocket" id="rocket">
+    <svg class="rocket-svg" viewBox="0 0 44 78" xmlns="http://www.w3.org/2000/svg">
+      <ellipse class="rocket-flame" cx="22" cy="68" rx="6" ry="11" fill="var(--flame)" opacity="0.9"/>
+      <path d="M22,3 C31,15 34,32 34,50 L10,50 C10,32 13,15 22,3 Z" fill="var(--rocket-body)"/>
+      <path d="M10,50 L2,66 L12,60 Z" fill="var(--rocket-dark)"/>
+      <path d="M34,50 L42,66 L32,60 Z" fill="var(--rocket-dark)"/>
+      <rect x="10" y="50" width="24" height="8" fill="var(--rocket-dark)"/>
+      <circle cx="22" cy="26" r="6" fill="#0e2038"/>
+    </svg>
+  </div>
+
+  <div class="hero-fade"></div>
+
+  <div class="titletext">
+    <h1 class="grad-title">PEDRO TAPIA ZAMORA<span>Engineering Portfolio</span></h1>
+  </div>
+
+  <div class="enter-cta">
+    <button type="button" class="btn sage enter-trigger" id="enter-btn">Enter Portfolio →</button>
+    <div class="enter-hint">Click to launch</div>
+  </div>
+
+</div>
+
+<script>
+  // Generate a denser field of stars, at random positions.
+  (function(){
+    var starsEl = document.getElementById('stars');
+    var count = window.innerWidth < 640 ? 90 : 190;
+    for (var i = 0; i < count; i++){
+      var s = document.createElement('div');
+      s.className = 'star';
+      s.style.left = (Math.random()*100) + '%';
+      s.style.top = (Math.random()*100) + '%';
+      s.style.animationDelay = (Math.random()*3.5) + 's';
+      starsEl.appendChild(s);
+    }
+  })();
+
+  // Gentle mouse-parallax for the sky layer only (planet/ISS/probe/rocket have their own motion).
+  (function(){
+    var scene = document.getElementById('scene');
+    var layers = document.querySelectorAll('.layer');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+
+    function handleParallax(clientX, clientY){
+      var rect = scene.getBoundingClientRect();
+      var relX = (clientX - rect.left) / rect.width - 0.5;
+      var relY = (clientY - rect.top) / rect.height - 0.5;
+      layers.forEach(function(layer){
+        if (layer.id === 'iss' || layer.id === 'probe') return; // these drift on their own
+        var depth = parseFloat(layer.getAttribute('data-depth')) || 0;
+        var moveX = relX * depth * 100;
+        var moveY = relY * depth * 60;
+        layer.style.transform = 'translate(' + (-moveX) + 'px,' + (-moveY) + 'px)';
+      });
+    }
+    scene.addEventListener('mousemove', function(e){ handleParallax(e.clientX, e.clientY); });
+    scene.addEventListener('mouseleave', function(){
+      layers.forEach(function(layer){
+        if (layer.id === 'iss' || layer.id === 'probe') return;
+        layer.style.transform = 'translate(0,0)';
+      });
+    });
+  })();
+
+  // Rocket follows the mouse, smoothly, and steers clear of the main planet, the ISS, and the probe.
+  (function(){
+    var scene = document.getElementById('scene');
+    var rocket = document.getElementById('rocket');
+    var planet = document.getElementById('planet-main');
+    var iss = document.getElementById('iss');
+    var probe = document.getElementById('probe');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var sceneRect = scene.getBoundingClientRect();
+    var obstacles = [];
+
+    function refreshObstacles(){
+      sceneRect = scene.getBoundingClientRect();
+      var pr = planet.getBoundingClientRect();
+      var ir = iss.getBoundingClientRect();
+      var qr = probe.getBoundingClientRect();
+      obstacles = [
+        { cx: pr.left + pr.width/2 - sceneRect.left, cy: pr.top + pr.height/2 - sceneRect.top, r: (Math.max(pr.width, pr.height)/2) + 40 },
+        { cx: ir.left + ir.width/2 - sceneRect.left, cy: ir.top + ir.height/2 - sceneRect.top, r: (Math.max(ir.width, ir.height)/2) + 34 },
+        { cx: qr.left + qr.width/2 - sceneRect.left, cy: qr.top + qr.height/2 - sceneRect.top, r: (Math.max(qr.width, qr.height)/2) + 28 }
+      ];
+    }
+    refreshObstacles();
+    window.addEventListener('resize', refreshObstacles);
+
+    var targetX = sceneRect.width * 0.5;
+    var targetY = sceneRect.height * 0.55;
+    var curX = targetX, curY = targetY;
+    var lastX = curX, lastY = curY;
+    var curRotation = 0;
+
+    function clampTarget(x, y){
+      var margin = 30;
+      x = Math.max(margin, Math.min(sceneRect.width - margin, x));
+      y = Math.max(margin, Math.min(sceneRect.height - margin, y));
+      for (var i = 0; i < obstacles.length; i++){
+        var o = obstacles[i];
+        var dx = x - o.cx, dy = y - o.cy;
+        var dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < o.r){
+          if (dist === 0){ dx = 0; dy = -1; dist = 1; }
+          var scale = o.r / dist;
+          x = o.cx + dx * scale;
+          y = o.cy + dy * scale;
+        }
+      }
+      return { x: x, y: y };
+    }
+
+    function setTarget(clientX, clientY){
+      var localX = clientX - sceneRect.left;
+      var localY = clientY - sceneRect.top;
+      var clamped = clampTarget(localX, localY);
+      targetX = clamped.x;
+      targetY = clamped.y;
+    }
+
+    scene.addEventListener('mousemove', function(e){ setTarget(e.clientX, e.clientY); });
+    scene.addEventListener('touchmove', function(e){
+      if (e.touches && e.touches[0]){ setTarget(e.touches[0].clientX, e.touches[0].clientY); }
+    }, {passive:true});
+
+    if (reduceMotion){
+      rocket.style.transform = 'translate(' + (targetX - 22) + 'px,' + (targetY - 39) + 'px)';
+      return;
+    }
+
+    function animate(){
+      curX += (targetX - curX) * 0.07;
+      curY += (targetY - curY) * 0.07;
+
+      var dx = curX - lastX, dy = curY - lastY;
+      var speed = Math.sqrt(dx*dx + dy*dy);
+      if (speed > 0.4){
+        var angle = Math.atan2(dy, dx) * 180 / Math.PI + 90;
+        curRotation += (angle - curRotation) * 0.15;
+      }
+      lastX = curX; lastY = curY;
+
+      rocket.style.transform =
+        'translate(' + (curX - 22) + 'px,' + (curY - 39) + 'px) rotate(' + curRotation + 'deg)';
+
+      requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+  })();
+
+  // Enter Portfolio: separates the front page from the home page. Once
+  // clicked, the flag is stored for this browser tab/session so link
+  // navigation around the site never re-shows the splash — only an actual
+  // page refresh clears it (see the gating script at the very top of head).
+  document.querySelectorAll('.enter-trigger').forEach(function(el){
+    el.addEventListener('click', function(ev){
+      ev.preventDefault();
+      try{ sessionStorage.setItem('ptz-entered', '1'); }catch(e){}
+      document.documentElement.classList.add('ptz-entered');
+      var main = document.getElementById('main-content');
+      if (main){
+        main.setAttribute('tabindex', '-1');
+        main.focus({preventScroll:true});
+      }
+      window.scrollTo(0,0);
+    });
+  });
+</script>
+
+<!-- ================= MAIN SITE CONTENT (the actual home page) ================= -->
+<div id="main-content">
+
+<div class="titleblock space-header">
+  <div class="mini-stars" aria-hidden="true">
+    <span class="mini-star" style="left:8%;top:30%;animation-delay:.2s;"></span>
+    <span class="mini-star" style="left:18%;top:60%;animation-delay:1.1s;"></span>
+    <span class="mini-star" style="left:30%;top:20%;animation-delay:.6s;"></span>
+    <span class="mini-star" style="left:44%;top:70%;animation-delay:1.8s;"></span>
+    <span class="mini-star" style="left:58%;top:35%;animation-delay:.4s;"></span>
+    <span class="mini-star" style="left:68%;top:15%;animation-delay:2.2s;"></span>
+    <span class="mini-star" style="left:76%;top:55%;animation-delay:.9s;"></span>
+    <span class="mini-star" style="left:88%;top:25%;animation-delay:1.5s;"></span>
+    <span class="mini-star" style="left:94%;top:65%;animation-delay:.3s;"></span>
+  </div>
+  <div class="mini-rocket" aria-hidden="true">
+    <svg viewBox="0 0 44 78" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="22" cy="68" rx="6" ry="11" fill="var(--flame)" opacity="0.9"/>
+      <path d="M22,3 C31,15 34,32 34,50 L10,50 C10,32 13,15 22,3 Z" fill="var(--rocket-body)"/>
+      <path d="M10,50 L2,66 L12,60 Z" fill="var(--rocket-dark)"/>
+      <path d="M34,50 L42,66 L32,60 Z" fill="var(--rocket-dark)"/>
+      <rect x="10" y="50" width="24" height="8" fill="var(--rocket-dark)"/>
+      <circle cx="22" cy="26" r="6" fill="#0e2038"/>
+    </svg>
+  </div>
+  <div class="titleblock-inner">
+    <div>
+      <h1 class="tb-name"><a href="#main-content">PEDRO TAPIA ZAMORA</a></h1>
+      <div class="tb-role"><strong>Mechanical Engineering Student — Energy Technologies · Aerospace · Infrastructure & Structures</strong></div>
+    </div>
+  </div>
+</div>
+
+<nav class="index">
+  <div class="wrap">
+    <a href="#main-content" class="current"><span class="num">01</span>HOME</a>
+    <a href="/projects/"><span class="num">02</span>PROJECTS</a>
+    <a href="/hobbies/"><span class="num">03</span>HOBBIES</a>
+    <a href="/contact/"><span class="num">04</span>CONTACT</a>
+  </div>
+</nav>
+
+<!-- ================= MISSION ================= -->
+<section class="sheet plain">
+  <div class="wrap">
+    <div style="display:grid; grid-template-columns:1.3fr 1fr; gap:40px; align-items:start;">
+      <div>
+        <div class="sheet-header">
+          <span class="sheet-num">00</span>
+          <h2>Mission</h2>
+        </div>
+        <p style="font-size:1.05rem; max-width:60ch; margin-top:20px;">
+          Mechanical Engineering Junior at Boston University concentrating in Energy Technologies & Sustainability with a minor in Mathematics. I am driven to save the world by improving access to renewable energy and creating sustainable solutions for infrastructure challenges.
+        </p>
+        <p style="max-width:60ch;">
+          At heart I am a problem solver who thinks creatively to build innovative solutions. I combine rigorous analysis with hands-on field experience to deliver engineering work that makes a real impact.
+        </p>
+        <a href="/projects/" class="btn sage" style="margin-top:10px;">View the Work</a>
+      </div>
+
+      <div class="photo-slot tall">
+        <img class="photo" src="/images/portrait.jpg" alt="Portrait photo"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="photo-fallback">Drop images/portrait.jpg here — a portrait or a photo of you at work/in the field</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OUTSIDE THE LAB (formerly the Hobbies page; the old
+     "Who I Am" bio timeline now lives on the Hobbies page instead) ================= -->
+<section class="sheet">
+  <div class="wrap">
+    <div class="sheet-header">
+      <span class="sheet-num">01</span>
+      <h2>Outside the Lab</h2>
+    </div>
+    <p class="sheet-sub">A few things that fill the time between problem sets and engineering work.</p>
+
+    <div class="timeline-container">
+      <div class="timeline-line"></div>
+
+      <div class="timeline-card timeline-card-top">
+        <div class="card">
+          <div class="photo-slot wide" style="margin-bottom:12px;">
+            <img class="photo" src="/images/hobby-01.jpg" alt="Hobby 1 photo"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="photo-fallback">images/hobby-01.jpg</div>
+          </div>
+          <div class="no"></div>
+          <h3>Bodybuilding & Powerlifting</h3>
+          <p><!-- EDIT ME --> "Your Body is a Temple" is a quote I live by. Physical activity is what helps me cope with stress and allows me to work at 100%.</p>
+        </div>
+      </div>
+
+      <div class="timeline-card timeline-card-bottom">
+        <div class="card">
+          <div class="photo-slot wide" style="margin-bottom:12px;">
+            <img class="photo" src="/images/hobby-02.jpg" alt="Hobby 2 photo"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="photo-fallback">images/hobby-02.jpg</div>
+          </div>
+          <div class="no"></div>
+          <h3>Cooking</h3>
+          <p><!-- EDIT ME --> Whenever I can I always take the time to cook and meal prep my meals. Creativity for me comes from creating great food.</p>
+        </div>
+      </div>
+
+      <div class="timeline-card timeline-card-top">
+        <div class="card">
+          <div class="photo-slot wide" style="margin-bottom:12px;">
+            <img class="photo" src="/images/hobby-03.jpg" alt="Hobby 3 photo"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="photo-fallback">images/hobby-03.jpg</div>
+          </div>
+          <div class="no"></div>
+          <h3>Watching Films</h3>
+          <p><!-- EDIT ME --> I love watching movies and overanalyzing them.</p>
+        </div>
+      </div>
+
+      <div class="timeline-card timeline-card-bottom">
+        <div class="card">
+          <div class="photo-slot wide" style="margin-bottom:12px;">
+            <img class="photo" src="/images/hobby-04.jpg" alt="Hobby 4 photo"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="photo-fallback">images/hobby-04.jpg</div>
+          </div>
+          <div class="no"></div>
+          <h3>Volunteering</h3>
+          <p><!-- EDIT ME --> I love giving back to the community that gave to me through hospital visits and cleaning the environment.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="space-footer">
+  <div class="mini-stars" aria-hidden="true">
+    <span class="mini-star" style="left:6%;top:40%;animation-delay:.5s;"></span>
+    <span class="mini-star" style="left:16%;top:70%;animation-delay:1.4s;"></span>
+    <span class="mini-star" style="left:26%;top:25%;animation-delay:.8s;"></span>
+    <span class="mini-star" style="left:40%;top:60%;animation-delay:2.0s;"></span>
+    <span class="mini-star" style="left:55%;top:30%;animation-delay:.3s;"></span>
+    <span class="mini-star" style="left:66%;top:75%;animation-delay:1.2s;"></span>
+    <span class="mini-star" style="left:80%;top:20%;animation-delay:1.9s;"></span>
+    <span class="mini-star" style="left:92%;top:50%;animation-delay:.7s;"></span>
+  </div>
+  <div class="mini-rocket" aria-hidden="true">
+    <svg viewBox="0 0 44 78" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="22" cy="68" rx="6" ry="11" fill="var(--flame)" opacity="0.9"/>
+      <path d="M22,3 C31,15 34,32 34,50 L10,50 C10,32 13,15 22,3 Z" fill="var(--rocket-body)"/>
+      <path d="M10,50 L2,66 L12,60 Z" fill="var(--rocket-dark)"/>
+      <path d="M34,50 L42,66 L32,60 Z" fill="var(--rocket-dark)"/>
+      <rect x="10" y="50" width="24" height="8" fill="var(--rocket-dark)"/>
+      <circle cx="22" cy="26" r="6" fill="#0e2038"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <span>Drawn up as a working draft — content pending.</span>
+    <span><a href="/contact/">Get in touch →</a></span>
+  </div>
+</footer>
+
+</div><!-- /#main-content -->
+
+</body>
+</html>
