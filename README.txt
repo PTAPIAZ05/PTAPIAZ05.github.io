@@ -2,9 +2,9 @@ Drop your image files in this folder using these exact names and they'll appear
 automatically on the site (no code editing needed):
 
   portrait.jpg                          - Home page hero photo
-  ndot-01.jpg .. ndot-05.jpg             - NDOT project cards
+  ndot-01.jpg .. ndot-04.jpg             - NDOT project cards
   research-01.jpg, research-02.jpg       - Formal Research cards
-  bu-01.jpg .. bu-07.jpg                 - Boston University cards
+  bu-01.jpg .. bu-06.jpg                 - Boston University cards (bu-05 = Mechanical Lens)
   ata-01.jpg .. ata-04.jpg               - ATA cards
   hobby-01.jpg .. hobby-03.jpg           - "Who I Am" cards (home page)
   contact.jpg                            - Contact page photo (optional)

@@ -90,18 +90,6 @@ const PROJECTS = {
     reflection: "EDIT ME — a lesson learned or improvement you'd suggest."
   },
 
-  "ndot-05": {
-    section: "Nevada Department of Transportation",
-    sectionLink: "projects.html#ndot",
-    title: "Surveying Land",
-    image: "images/ndot-05.jpg",
-    tags: ["Surveying", "Site Assessment", "Geomatics"],
-    summary: "Land surveying and site assessment work for NDOT projects — topographical analysis, boundary verification, and baseline documentation for infrastructure design and planning.",
-    overview: "EDIT ME — purpose of the survey and site context.",
-    approach: "EDIT ME — surveying equipment/methods used.",
-    results: "EDIT ME — deliverables produced and how they were used downstream.",
-    reflection: "EDIT ME — a lesson learned or improvement you'd suggest."
-  },
 
   "bu-01": {
     section: "Boston University",
@@ -158,13 +146,13 @@ const PROJECTS = {
   "bu-05": {
     section: "Boston University",
     sectionLink: "projects.html#bu",
-    title: "Argo Rocket Fluids & Structures",
+    title: "Mechanical Lens",
     image: "images/bu-05.jpg",
-    tags: ["Aerospace", "Fluids", "Propulsion"],
-    summary: "Advanced project for rocket propulsion systems — analysis of fluid dynamics in rocket engines, structural integrity under extreme conditions, and thermal management solutions.",
+    tags: ["Mechanical Design", "Optics", "Prototyping"],
+    summary: "EDIT ME — a one-line summary of the Mechanical Lens project.",
     overview: "EDIT ME — the course/context and design brief.",
-    approach: "EDIT ME — the fluid/structural analysis tools and methods used.",
-    results: "EDIT ME — key findings from the analysis.",
+    approach: "EDIT ME — the mechanism design, materials, and tools used.",
+    results: "EDIT ME — how well the lens mechanism performed.",
     reflection: "EDIT ME — what you'd redesign next time."
   },
 
@@ -175,19 +163,6 @@ const PROJECTS = {
     image: "images/bu-06.jpg",
     tags: ["Water Systems", "Environmental", "Sustainability"],
     summary: "Water systems improvement project focused on municipal water treatment and distribution — engineering design for enhanced efficiency, sustainability, and water quality assurance.",
-    overview: "EDIT ME — the community/context and problem addressed.",
-    approach: "EDIT ME — design methodology and standards followed.",
-    results: "EDIT ME — projected or measured improvement.",
-    reflection: "EDIT ME — what you'd redesign next time."
-  },
-
-  "bu-07": {
-    section: "Boston University",
-    sectionLink: "projects.html#bu",
-    title: "Mancheren Grande Water Improvement",
-    image: "images/bu-07.jpg",
-    tags: ["Infrastructure", "Water Resources", "Civil Engineering"],
-    summary: "Large-scale water infrastructure improvement initiative — comprehensive engineering analysis and design for water resource management, treatment systems, and community impact assessment.",
     overview: "EDIT ME — the community/context and problem addressed.",
     approach: "EDIT ME — design methodology and standards followed.",
     results: "EDIT ME — projected or measured improvement.",
