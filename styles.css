@@ -4,17 +4,22 @@
    ======================================================= */
 
 :root{
-  --paper:#060810;
-  --paper-line:#12151c;
-  --paper-alt:#0A0D16;
-  --ink:#BFDBF7;
-  --navy:#4FA3E3;
-  --navy-dim:#2E6DA4;
-  --steel:#7C93AE;
-  --sage:#39C0F0;
-  --sage-dim:#1F97C2;
-  --grid:#1C2432;
-  --grid-soft:#10141C;
+  --paper:#FFFFFF;
+  --paper-line:#E6E9EF;
+  --paper-alt:#F7F8FB;
+  --ink:#111111;
+  --navy:#111111;          /* main text colour (black) */
+  --navy-dim:#333333;
+  --steel:#5A6270;         /* secondary text */
+  --sage:#4169E1;          /* accent — royal blue */
+  --sage-dim:#2F54C4;
+  --royal:#4169E1;         /* header / footer background */
+  --on-royal:#FFFFFF;
+  --grid:#D9DEE7;
+  --grid-soft:#EEF1F6;
+  --rocket-body:#e7ecf1;
+  --rocket-dark:#0e2038;
+  --flame:#F2C879;
   --max:1040px;
 }
 *{box-sizing:border-box;}
@@ -43,9 +48,13 @@ img{max-width:100%; display:block;}
 
 /* ---------- Title block (used on every page) ---------- */
 .titleblock{
-  border-bottom:2px solid var(--navy);
-  background:var(--paper);
+  position:relative;
+  overflow:hidden;
+  border-bottom:2px solid var(--sage-dim);
+  background:var(--royal);
+  color:var(--on-royal);
 }
+.titleblock .titleblock-inner{position:relative; z-index:3;}
 .titleblock-inner{
   max-width:var(--max);
   margin:0 auto;
@@ -60,10 +69,10 @@ img{max-width:100%; display:block;}
   line-height:0.92;
   font-family:'Space Grotesk', sans-serif;
 }
-.tb-name a{text-decoration:none; color:var(--navy);}
+.tb-name a{text-decoration:none; color:var(--on-royal);}
 .tb-role{
   font-weight:500;
-  color:var(--navy);
+  color:var(--on-royal);
   font-size:0.95rem;
   margin-top:8px;
   font-family:'Space Grotesk', sans-serif;
@@ -84,7 +93,7 @@ img{max-width:100%; display:block;}
 /* ---------- Sheet-index nav (site nav, every page) ---------- */
 nav.index{
   position:sticky; top:0; z-index:20;
-  background:rgba(6,8,16,0.92);
+  background:rgba(255,255,255,0.94);
   backdrop-filter:blur(4px);
   border-bottom:1px solid var(--grid);
 }
@@ -200,11 +209,11 @@ section.sheet:nth-of-type(even){background-color:var(--paper-alt);}
 }
 .timeline-card .card{
   position:relative;
-  box-shadow:0 2px 12px rgba(79,163,227,0.12);
+  box-shadow:0 2px 12px rgba(17,17,17,0.08);
   transition:all 0.3s ease;
 }
 .timeline-card .card:hover{
-  box-shadow:0 8px 20px rgba(79,163,227,0.2);
+  box-shadow:0 8px 20px rgba(65,105,225,0.18);
   transform:translateY(-4px);
 }
 @media (max-width:768px){
@@ -244,7 +253,7 @@ section.sheet:nth-of-type(even){background-color:var(--paper-alt);}
   content:'';
   position:absolute;
   inset:0;
-  background:radial-gradient(circle at 30% 30%, rgba(79,163,227,0.18), transparent 70%);
+  background:radial-gradient(circle at 30% 30%, rgba(65,105,225,0.10), transparent 70%);
   opacity:0;
   transition:opacity 0.3s ease;
   pointer-events:none;
@@ -253,9 +262,8 @@ section.sheet:nth-of-type(even){background-color:var(--paper-alt);}
 .card:hover{
   transform:translateY(-12px) translateZ(20px) rotateX(2deg) rotateY(2deg);
   box-shadow:
-    0 20px 40px rgba(0,0,0,0.45),
-    0 8px 20px rgba(57,192,240,0.18),
-    inset 0 1px 0 rgba(79,163,227,0.15);
+    0 20px 40px rgba(17,17,17,0.12),
+    0 8px 20px rgba(65,105,225,0.16);
   border-color:var(--sage);
 }
 .card:hover::before{
@@ -333,7 +341,7 @@ section.sheet:nth-of-type(even){background-color:var(--paper-alt);}
 }
 .photo-slot:hover{
   transform:translateY(-8px) translateZ(15px) scale(1.02);
-  box-shadow:0 15px 35px rgba(0,0,0,0.5), 0 0 24px rgba(57,192,240,0.15);
+  box-shadow:0 15px 35px rgba(17,17,17,0.14), 0 0 24px rgba(65,105,225,0.12);
   border-color:var(--sage);
 }
 .photo-slot .photo{
@@ -385,7 +393,7 @@ section.sheet:nth-of-type(even){background-color:var(--paper-alt);}
 .btn:hover{
   background:var(--navy-dim);
   transform:translateY(-2px);
-  box-shadow:0 8px 20px rgba(0,0,0,0.4), 0 0 16px rgba(79,163,227,0.2);
+  box-shadow:0 8px 20px rgba(17,17,17,0.18), 0 0 16px rgba(65,105,225,0.2);
 }
 .btn.sage{background:var(--sage); border-color:var(--sage);}
 .btn.sage:hover{background:var(--sage-dim);}
@@ -421,7 +429,7 @@ form.contact-form input:focus,
 form.contact-form textarea:focus{
   outline:2px solid var(--sage);
   outline-offset:1px;
-  box-shadow:0 0 0 4px rgba(57,192,240,0.15);
+  box-shadow:0 0 0 4px rgba(65,105,225,0.15);
 }
 form.contact-form textarea{resize:vertical; min-height:130px;}
 
@@ -440,15 +448,83 @@ form.contact-form textarea{resize:vertical; min-height:130px;}
 }
 
 /* ---------- Footer ---------- */
-footer{padding:36px 0 60px;}
+footer{
+  position:relative;
+  overflow:hidden;
+  padding:36px 0 60px;
+  background:var(--royal);
+  color:var(--on-royal);
+}
 footer .wrap{
+  position:relative;
+  z-index:3;
   display:flex;
   justify-content:space-between;
   align-items:center;
   flex-wrap:wrap;
   gap:12px;
   font-size:0.85rem;
-  color:var(--steel);
+  color:var(--on-royal);
+}
+footer a{color:var(--on-royal);}
+
+/* ---------- Animated rocket + stars in the header and footer ----------
+   site.js injects the stars and rocket into every .titleblock and footer. */
+.strip-stars{position:absolute; inset:0; overflow:hidden; z-index:1; pointer-events:none;}
+.strip-star{
+  position:absolute;
+  width:1.5px; height:1.5px;
+  background:#fff;
+  border-radius:50%;
+  opacity:0.5;
+  animation:stripTwinkle 3s ease-in-out infinite;
+}
+@keyframes stripTwinkle{0%,100%{opacity:0.15;} 50%{opacity:0.85;}}
+.strip-rocket{
+  position:absolute;
+  width:20px; height:35px;
+  z-index:2;
+  pointer-events:none;
+}
+.strip-rocket-header{animation:stripDriftRight 12s linear infinite;}
+.strip-rocket-footer{animation:stripDriftLeft 15s linear infinite;}
+@keyframes stripDriftRight{
+  0%{left:-6%; top:70%; transform:rotate(90deg);}
+  100%{left:106%; top:25%; transform:rotate(90deg);}
+}
+@keyframes stripDriftLeft{
+  0%{left:106%; top:25%; transform:rotate(-90deg);}
+  100%{left:-6%; top:70%; transform:rotate(-90deg);}
+}
+.strip-flame{animation:flameFlicker 0.3s ease-in-out infinite alternate; transform-origin:center top;}
+@keyframes flameFlicker{
+  from{opacity:0.6; transform:scaleY(0.85);}
+  to{opacity:1; transform:scaleY(1.15);}
+}
+
+/* ---------- Fade-in on scroll ----------
+   site.js adds .reveal to content blocks and .is-visible once they scroll
+   into view. Uses an animation on opacity/translate (not transform/transition)
+   so it never fights the cards' existing hover effects. */
+.reveal{opacity:0;}
+.reveal.is-visible{animation:revealUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;}
+@keyframes revealUp{
+  from{opacity:0; translate:0 28px;}
+  to{opacity:1; translate:0 0;}
+}
+
+/* ---------- Volunteering page: two entries split by a divider line ---------- */
+.volunteer-split{
+  display:grid;
+  grid-template-columns:1fr 1px 1fr;
+  gap:48px;
+  align-items:stretch;
+  perspective:1000px;
+}
+.volunteer-divider{background:var(--sage); width:2px;}
+@media (max-width:720px){
+  .volunteer-split{grid-template-columns:1fr; gap:32px;}
+  .volunteer-divider{width:auto; height:2px;}
 }
 
 /* ---------- Responsive ---------- */
@@ -474,6 +550,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}
+  .reveal{opacity:1 !important;}
   *{
     transition:none !important;
     animation:none !important;

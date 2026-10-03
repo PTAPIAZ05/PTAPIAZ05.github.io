@@ -6,8 +6,7 @@ automatically on the site (no code editing needed):
   research-01.jpg, research-02.jpg       - Formal Research cards
   bu-01.jpg .. bu-07.jpg                 - Boston University cards
   ata-01.jpg .. ata-04.jpg               - ATA cards
-  hobby-01.jpg .. hobby-04.jpg           - Hobbies cards
-  gallery-01.jpg .. gallery-03.jpg       - Hobbies gallery
+  hobby-01.jpg .. hobby-03.jpg           - "Who I Am" cards (home page)
   contact.jpg                            - Contact page photo (optional)
 
 Any slot with no matching image just shows a small dashed placeholder box
