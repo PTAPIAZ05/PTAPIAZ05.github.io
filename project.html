@@ -62,10 +62,6 @@
           <h3>Results</h3>
           <p id="d-results"></p>
         </div>
-        <div class="detail-block">
-          <h3>Reflection</h3>
-          <p id="d-reflection"></p>
-        </div>
       </div>
     </div>
 
@@ -99,10 +95,12 @@
     document.getElementById('page-title').textContent = project.title + ' — Pedro Tapia Zamora';
     document.getElementById('d-section').textContent = project.section;
     document.getElementById('d-title').textContent = project.title;
-    document.getElementById('d-overview').textContent = project.overview;
-    document.getElementById('d-approach').textContent = project.approach;
-    document.getElementById('d-results').textContent = project.results;
-    document.getElementById('d-reflection').textContent = project.reflection;
+    // Fill each section; hide any section that has no text yet.
+    ['overview', 'approach', 'results'].forEach(function(key){
+      var el = document.getElementById('d-' + key);
+      el.textContent = project[key] || '';
+      if (!project[key]) el.closest('.detail-block').style.display = 'none';
+    });
 
     var img = document.getElementById('d-image');
     img.src = project.image;
