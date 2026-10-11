@@ -2,7 +2,7 @@ Drop your image files in this folder using these exact names and they'll appear
 automatically on the site (no code editing needed):
 
   portrait.jpg                          - Home page hero photo
-  ndot-01.jpg .. ndot-04.jpg             - NDOT project cards
+  ndot-01.jpg .. ndot-03.jpg             - NDOT project cards (ndot-03 = Turtle Fencing, Drainage & Paving)
   research-01.jpg, research-02.jpg       - Formal Research cards
   bu-01.jpg .. bu-06.jpg                 - Boston University cards (bu-05 = Mechanical Lens)
   ata-01.jpg .. ata-04.jpg               - ATA cards

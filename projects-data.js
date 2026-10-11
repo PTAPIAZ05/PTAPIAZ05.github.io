@@ -67,26 +67,13 @@ const PROJECTS = {
   "ndot-03": {
     section: "Nevada Department of Transportation",
     sectionLink: "projects.html#ndot",
-    title: "Turtle Protective Fencing",
+    title: "Turtle Fencing, Drainage & Paving",
     image: "images/ndot-03.jpg",
-    tags: ["Environmental Design", "Infrastructure", "Field Testing"],
-    summary: "Environmental mitigation project designing and implementing protective fencing systems for wildlife crossing. Included structural analysis and field installation oversight.",
-    overview: "EDIT ME — the environmental concern driving this project.",
-    approach: "EDIT ME — the structural analysis and installation process.",
-    results: "EDIT ME — installation outcome and any monitoring results.",
-    reflection: "EDIT ME — a lesson learned or improvement you'd suggest."
-  },
-
-  "ndot-04": {
-    section: "Nevada Department of Transportation",
-    sectionLink: "projects.html#ndot",
-    title: "Drainage & Pavement Systems",
-    image: "images/ndot-04.jpg",
-    tags: ["Pavement Design", "Drainage", "QA/QC Testing"],
-    summary: "Comprehensive project on highway drainage and pavement systems — material properties evaluation, quality control testing, and installation verification for resilient infrastructure.",
-    overview: "EDIT ME — scope of the drainage/pavement work.",
-    approach: "EDIT ME — testing methods and standards used.",
-    results: "EDIT ME — QA/QC outcomes, quantified where possible.",
+    tags: ["Environmental Design", "Drainage", "QA/QC Testing"],
+    summary: "Protective turtle fencing for wildlife crossings, Class 3 rip rap placement on drainage systems, and paving on the south and north bound U.S. 95.",
+    overview: "EDIT ME — scope of the fencing, drainage and paving work.",
+    approach: "EDIT ME — installation, testing methods and standards used.",
+    results: "EDIT ME — outcomes, quantified where possible.",
     reflection: "EDIT ME — a lesson learned or improvement you'd suggest."
   },
 
