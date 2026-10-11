@@ -63,7 +63,7 @@ const PROJECTS = {
   "ndot-03": {
     section: "Nevada Department of Transportation",
     sectionLink: "projects.html#ndot",
-    title: "Protective Turtle Fencing & Drainage Systems",
+    title: "Protective Tortoise Fencing & Drainage Systems",
     image: "images/ndot-03.jpg",
     tags: ["Environmental Design", "Drainage", "QA/QC Testing"],
     summary: "Tortoise fencing QA and 13 culverts converted into wildlife crossings across 36 miles of U.S. 95.",
@@ -123,20 +123,8 @@ const PROJECTS = {
   "bu-05": {
     section: "Boston University",
     sectionLink: "projects.html#bu",
-    title: "Mechanical Lens",
+    title: "Central American Rural Community Water System Improvement Project",
     image: "images/bu-05.jpg",
-    tags: [],
-    summary: "",
-    overview: "",
-    approach: "",
-    results: ""
-  },
-
-  "bu-06": {
-    section: "Boston University",
-    sectionLink: "projects.html#bu",
-    title: "South American Rural Community Water System Improvement Project",
-    image: "images/bu-06.jpg",
     tags: ["Water Distribution", "EPANET Modeling", "Sustainability"],
     summary: "Clean water systems bringing in-home water to 400+ residents in Honduras and Guatemala.",
     overview: "Designed and delivered clean water distribution systems for rural communities in Honduras (2025) and Guatemala (2026), providing over 400 residents with reliable in-home water access for the first time.",
