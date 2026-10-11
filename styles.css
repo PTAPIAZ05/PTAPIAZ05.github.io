@@ -186,7 +186,20 @@ section.sheet:nth-of-type(even){background-color:var(--paper-alt);}
   margin:14px 0 34px;
 }
 
-/* ---------- Timeline Layout (Who I Am section) ---------- */
+/* ---------- About Me quote (home page) ---------- */
+.about-quote{
+  margin:22px 0 20px;
+  padding:4px 0 4px 18px;
+  border-left:3px solid var(--sage);
+  font-family:'Space Grotesk', sans-serif;
+  font-size:1.15rem;
+  font-style:italic;
+  line-height:1.5;
+  color:var(--navy);
+  max-width:56ch;
+}
+
+/* ---------- Timeline Layout (Outside Hobbies section) ---------- */
 .timeline-container{
   position:relative;
   padding:40px 0;

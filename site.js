@@ -50,6 +50,7 @@
     'section.sheet .volunteer-split > .card',
     'section.sheet .wrap > div > .photo-slot',
     'section.sheet .wrap > div > div > p',
+    'section.sheet .wrap > div > div > .about-quote',
     'section.sheet .wrap > div > div > .btn',
     'section.sheet .contact-list li',
     'section.sheet .detail-header',
