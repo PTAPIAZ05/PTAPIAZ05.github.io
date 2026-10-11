@@ -133,20 +133,24 @@
     box-shadow:inset -14px -12px 34px rgba(0,0,0,0.5), 0 0 34px 6px rgba(142,201,232,0.18);
   }
 
-  /* ISS — drifts slowly on its own */
+  /* ISS — loops slowly around the left side of the scene, clear of the title */
   .layer-iss{inset:auto; top:34%; left:12%; width:96px; height:40px; z-index:2;}
-  .iss-svg{width:100%; height:100%; display:block; animation:issDrift 14s ease-in-out infinite;}
-  @keyframes issDrift{
+  .iss-svg{width:100%; height:100%; display:block; animation:issOrbit 38s ease-in-out infinite;}
+  @keyframes issOrbit{
     0%,100%{transform:translate(0,0) rotate(0deg);}
-    50%{transform:translate(26px,-10px) rotate(2deg);}
+    25%{transform:translate(8vw,-16vh) rotate(6deg);}
+    50%{transform:translate(12vw,6vh) rotate(0deg);}
+    75%{transform:translate(2vw,22vh) rotate(-6deg);}
   }
 
-  /* Second satellite — simple comm-sat, drifts independently */
+  /* Second satellite — loops around the right side, opposite direction */
   .layer-sat2{inset:auto; top:60%; right:16%; width:60px; height:44px; z-index:2;}
-  .sat2-svg{width:100%; height:100%; display:block; animation:sat2Drift 17s ease-in-out infinite;}
-  @keyframes sat2Drift{
+  .sat2-svg{width:100%; height:100%; display:block; animation:sat2Orbit 46s ease-in-out infinite;}
+  @keyframes sat2Orbit{
     0%,100%{transform:translate(0,0) rotate(0deg);}
-    50%{transform:translate(-18px,14px) rotate(-6deg);}
+    25%{transform:translate(-6vw,-12vh) rotate(-10deg);}
+    50%{transform:translate(-12vw,4vh) rotate(4deg);}
+    75%{transform:translate(-4vw,14vh) rotate(12deg);}
   }
 
   /* Rocket — mouse-controlled */
@@ -371,7 +375,8 @@
       sceneRect = scene.getBoundingClientRect();
       obstacles = [];
       obstacleEls.forEach(function(el){
-        var r = el.getBoundingClientRect();
+        // Satellites animate their inner SVG, so measure that to follow them.
+        var r = (el.querySelector('svg') || el).getBoundingClientRect();
         obstacles.push({
           cx: r.left + r.width/2 - sceneRect.left,
           cy: r.top + r.height/2 - sceneRect.top,
@@ -406,10 +411,11 @@
       return { x: x, y: y };
     }
 
+    var pointerX = targetX, pointerY = targetY;
     function setTarget(clientX, clientY){
-      var localX = clientX - sceneRect.left;
-      var localY = clientY - sceneRect.top;
-      var clamped = clampTarget(localX, localY);
+      pointerX = clientX - sceneRect.left;
+      pointerY = clientY - sceneRect.top;
+      var clamped = clampTarget(pointerX, pointerY);
       targetX = clamped.x;
       targetY = clamped.y;
     }
@@ -423,6 +429,11 @@
       rocket.style.transform = 'translate(' + (targetX - 22) + 'px,' + (targetY - 39) + 'px)';
     } else {
       (function animate(){
+        // Satellites keep moving, so re-measure them and keep the rocket clear.
+        refreshObstacles();
+        var clamped = clampTarget(pointerX, pointerY);
+        targetX = clamped.x; targetY = clamped.y;
+
         curX += (targetX - curX) * 0.07;
         curY += (targetY - curY) * 0.07;
 
@@ -471,7 +482,7 @@
   <div class="titleblock-inner">
     <div>
       <h1 class="tb-name"><a href="index.html">PEDRO TAPIA ZAMORA</a></h1>
-      <div class="tb-role"><strong>Mechanical Engineering Student — Energy Technologies · Aerospace · Infrastructure & Structures</strong></div>
+      <div class="tb-role"><strong>Mechanical Engineering Student — Clean Energy · Energy Storage · Aerospace · Manufacturing</strong></div>
     </div>
   </div>
 </div>
@@ -568,7 +579,7 @@
 
 <footer>
   <div class="wrap">
-    <span>Drawn up as a working draft — content pending.</span>
+    <span>© 2026 Pedro Tapia Zamora</span>
     <span><a href="contact.html">Get in touch →</a></span>
   </div>
 </footer>

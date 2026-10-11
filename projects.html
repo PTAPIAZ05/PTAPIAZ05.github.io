@@ -18,7 +18,7 @@
   <div class="titleblock-inner">
     <div>
       <h1 class="tb-name"><a href="index.html">PEDRO TAPIA ZAMORA</a></h1>
-      <div class="tb-role"><strong>Mechanical Engineering Student — Energy Technologies · Aerospace · Infrastructure & Structures</strong></div>
+      <div class="tb-role"><strong>Mechanical Engineering Student — Clean Energy · Energy Storage · Aerospace · Manufacturing</strong></div>
     </div>
   </div>
 </div>
@@ -47,10 +47,22 @@
 <div class="filter-band" id="tag-filter">
   <div class="wrap">
     <div class="filter-head">
-      <span class="filter-title">Filter by skill</span>
+      <button type="button" class="filter-toggle" aria-expanded="false" aria-controls="filter-panel">
+        <svg class="filter-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18l-7 8.5V19l-4 2v-7.5L3 5z" fill="currentColor"/></svg>
+        <span>Filter by skill</span>
+        <svg class="filter-caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <span class="filter-active" hidden>
+        <span class="filter-active-label"></span>
+        <button type="button" class="filter-clear" aria-label="Clear filter">&times;</button>
+      </span>
       <span class="filter-status" role="status" aria-live="polite"></span>
     </div>
-    <div class="filter-chips" role="group" aria-label="Filter projects by skill"></div>
+    <div class="filter-panel" id="filter-panel">
+      <div class="filter-panel-inner">
+        <div class="filter-chips" role="group" aria-label="Filter projects by skill"></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -218,7 +230,7 @@
 
 <footer>
   <div class="wrap">
-    <span>Drawn up as a working draft — content pending.</span>
+    <span>© 2026 Pedro Tapia Zamora</span>
     <span><a href="contact.html">Get in touch →</a></span>
   </div>
 </footer>

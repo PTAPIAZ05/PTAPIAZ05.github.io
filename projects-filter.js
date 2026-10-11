@@ -14,6 +14,21 @@
   if (!bar) return;
   var chipsEl = bar.querySelector('.filter-chips');
   var statusEl = bar.querySelector('.filter-status');
+  var toggleBtn = bar.querySelector('.filter-toggle');
+  var activeEl = bar.querySelector('.filter-active');
+  var activeLabel = bar.querySelector('.filter-active-label');
+
+  // Collapsed by default so the top of the page stays clean; click to expand.
+  function setOpen(open){
+    bar.classList.toggle('is-open', open);
+    toggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  toggleBtn.addEventListener('click', function(){
+    setOpen(!bar.classList.contains('is-open'));
+  });
+  bar.querySelector('.filter-clear').addEventListener('click', function(){
+    apply('', true);
+  });
   var cards = Array.prototype.slice.call(document.querySelectorAll('section.sheet .card-grid > .card'));
   var sections = Array.prototype.slice.call(document.querySelectorAll('section.sheet'));
 
@@ -83,9 +98,12 @@
       a.hidden = !!(target && target.hidden);
     });
 
+    // The chosen tag stays visible (with a clear button) even when collapsed.
+    activeEl.hidden = !tag;
+    activeLabel.textContent = tag;
     statusEl.textContent = tag
-      ? 'Showing ' + shown + ' of ' + cards.length + ' projects tagged “' + tag + '”.'
-      : 'Showing all ' + cards.length + ' projects.';
+      ? shown + ' of ' + cards.length + ' projects'
+      : 'All ' + cards.length + ' projects';
 
     if (updateUrl && window.history && history.replaceState){
       var url = location.pathname + (tag ? '?tag=' + encodeURIComponent(tag) : '');
