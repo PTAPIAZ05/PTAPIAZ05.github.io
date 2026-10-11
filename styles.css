@@ -468,6 +468,9 @@ form.contact-form textarea{resize:vertical; min-height:130px;}
   min-width:110px;
 }
 
+/* Text that changes with layout (e.g. "to the right" vs "below") */
+.only-narrow{display:none;}
+
 /* ---------- Footer ---------- */
 footer{
   position:relative;
@@ -559,6 +562,8 @@ footer a{color:var(--on-royal);}
   nav.subnav a{padding:9px 0; font-size:0.66rem;}
   /* Two-column layouts stack on phones */
   .two-col{grid-template-columns:1fr !important; gap:32px !important;}
+  .only-wide{display:none;}
+  .only-narrow{display:inline !important;}
   .tb-meta{border-left:none; padding-left:0; text-align:left; border-top:1px solid var(--grid); padding-top:10px; display:none;}
   .tb-meta .row{justify-content:flex-start;}
   .tb-meta .val{margin-left:auto;}
