@@ -108,10 +108,13 @@
     document.getElementById('d-image-fallback').textContent = project.image;
 
     var tagsEl = document.getElementById('d-tags');
+    // Each tag links back to the Projects page filtered to that skill.
     project.tags.forEach(function(tag){
-      var span = document.createElement('span');
-      span.textContent = tag;
-      tagsEl.appendChild(span);
+      var link = document.createElement('a');
+      link.textContent = tag;
+      link.href = 'projects.html?tag=' + encodeURIComponent(tag);
+      link.title = 'See all projects tagged ' + tag;
+      tagsEl.appendChild(link);
     });
 
     var sectionLink = project.sectionLink || 'projects.html';

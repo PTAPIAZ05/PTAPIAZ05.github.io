@@ -43,6 +43,17 @@
 </nav>
 </div>
 
+<!-- Filter projects by skill tag (buttons are built by projects-filter.js) -->
+<div class="filter-band" id="tag-filter">
+  <div class="wrap">
+    <div class="filter-head">
+      <span class="filter-title">Filter by skill</span>
+      <span class="filter-status" role="status" aria-live="polite"></span>
+    </div>
+    <div class="filter-chips" role="group" aria-label="Filter projects by skill"></div>
+  </div>
+</div>
+
 <!-- ================= SECTION 01 — FORMAL RESEARCH ================= -->
 <section class="sheet" id="research">
   <div class="wrap">
@@ -62,7 +73,7 @@
         <div class="no">R-01</div>
         <h3>Heliostat Optimization</h3>
         <p>A low-cost sensor that measures heliostat mirror angles for utility-scale solar fields.</p>
-        <div class="tags"><span>Solar Energy</span><span>Optimization</span><span>Data Acquisition</span></div>
+        <div class="tags"><span>Renewable Energy</span><span>Sensors &amp; Embedded Systems</span><span>MATLAB</span><span>Optimization</span></div>
       </a>
 
       <a class="card filled" href="project.html?id=research-02">
@@ -74,7 +85,7 @@
         <div class="no">R-02</div>
         <h3>Hybrid Battery-Supercapacitor HVAC Emulator</h3>
         <p>A lab-scale battery-supercapacitor platform for testing building energy strategies at lower cost.</p>
-        <div class="tags"><span>Energy Storage</span><span>HVAC Systems</span></div>
+        <div class="tags"><span>Renewable Energy</span><span>Simulation &amp; Modeling</span><span>Testing &amp; Validation</span></div>
       </a>
 
     </div>
@@ -100,7 +111,7 @@
         <div class="no">N-01</div>
         <h3>Barrier &amp; Guard Rail Replacement</h3>
         <p>QA inspections of guard and barrier rail replacement along U.S. 95 in Clark County.</p>
-        <div class="tags"><span>QA/QC Testing</span><span>Materials Testing</span><span>Structural Verification</span></div>
+        <div class="tags"><span>QA/QC Inspection</span><span>Materials Testing</span><span>Structures</span><span>Infrastructure</span></div>
       </a>
 
       <a class="card filled" href="project.html?id=ndot-02">
@@ -112,7 +123,7 @@
         <div class="no">N-02</div>
         <h3>Culvert Headwall Replacement</h3>
         <p>QA inspections of a culvert headwall rebuilt to control stormwater and stabilize terrain.</p>
-        <div class="tags"><span>Drainage Systems</span><span>Field Documentation</span><span>Structural Verification</span></div>
+        <div class="tags"><span>QA/QC Inspection</span><span>Materials Testing</span><span>Structures</span><span>Water &amp; Drainage</span></div>
       </a>
 
       <a class="card filled" href="project.html?id=ndot-03">
@@ -124,7 +135,7 @@
         <div class="no">N-03</div>
         <h3>Protective Tortoise Fencing &amp; Drainage Systems</h3>
         <p>Tortoise fencing QA and 13 culverts converted into wildlife crossings across 36 miles of U.S. 95.</p>
-        <div class="tags"><span>Environmental Design</span><span>Drainage</span><span>QA/QC Testing</span></div>
+        <div class="tags"><span>QA/QC Inspection</span><span>Infrastructure</span><span>Water &amp; Drainage</span><span>Sustainability</span></div>
       </a>
 
     </div>
@@ -150,7 +161,7 @@
         <div class="no">B-01</div>
         <h3>Autonomous Desk Cleaning Robot</h3>
         <p>A hands-free robot that clears debris from a 4×4 ft desk in under two minutes.</p>
-        <div class="tags"><span>Robotics</span><span>Automation</span><span>Mechanical Design</span></div>
+        <div class="tags"><span>Sensors &amp; Embedded Systems</span><span>CAD</span><span>Prototyping &amp; Fabrication</span><span>Testing &amp; Validation</span></div>
       </a>
 
       <a class="card filled" href="project.html?id=bu-02">
@@ -162,7 +173,7 @@
         <div class="no">B-02</div>
         <h3>Room Temperature Sensor</h3>
         <p>A handheld, low-power temperature monitor with a display and adjustable alarm.</p>
-        <div class="tags"><span>Optimization</span><span>Data Acquisition</span><span>Control Systems</span></div>
+        <div class="tags"><span>Sensors &amp; Embedded Systems</span><span>CAD</span><span>Prototyping &amp; Fabrication</span></div>
       </a>
 
       <a class="card filled" href="project.html?id=bu-03">
@@ -174,7 +185,7 @@
         <div class="no">B-03</div>
         <h3>Acrylic Truss</h3>
         <p>An acrylic truss designed for maximum load within tight size and material limits.</p>
-        <div class="tags"><span>Structural Design</span><span>Optimization</span><span>Data Acquisition</span></div>
+        <div class="tags"><span>MATLAB</span><span>Structures</span><span>Optimization</span><span>Testing &amp; Validation</span></div>
       </a>
 
       <a class="card filled" href="project.html?id=bu-04">
@@ -186,7 +197,7 @@
         <div class="no">B-04</div>
         <h3>Rocket Nozzle</h3>
         <p>A bell nozzle designed and stress-tested for operation at 10,000 ft.</p>
-        <div class="tags"><span>Optimization</span><span>Finite Element Analysis</span><span>Integration</span></div>
+        <div class="tags"><span>CAD</span><span>Simulation &amp; Modeling</span><span>Structures</span><span>Testing &amp; Validation</span></div>
       </a>
 
       <a class="card filled" href="project.html?id=bu-05">
@@ -198,7 +209,7 @@
         <div class="no">B-05</div>
         <h3>Central American Rural Community Water System Improvement Project</h3>
         <p>Clean water systems bringing in-home water to 400+ residents in Honduras and Guatemala.</p>
-        <div class="tags"><span>Water Distribution</span><span>EPANET Modeling</span><span>Sustainability</span></div>
+        <div class="tags"><span>Infrastructure</span><span>Water &amp; Drainage</span><span>Simulation &amp; Modeling</span><span>Sustainability</span></div>
       </a>
 
     </div>
@@ -212,6 +223,7 @@
   </div>
 </footer>
 
+<script src="projects-filter.js"></script>
 <script src="site.js"></script>
 </body>
 </html>
