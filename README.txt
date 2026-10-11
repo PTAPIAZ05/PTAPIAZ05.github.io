@@ -7,6 +7,8 @@ automatically on the site (no code editing needed):
   bu-01.jpg .. bu-05.jpg                 - Boston University cards (bu-05 = Central American water project)
   ata-01.jpg .. ata-04.jpg               - ATA cards
   hobby-01.jpg .. hobby-03.jpg           - "Outside Hobbies" cards (home page)
+  volunteer-01.jpg                       - Volunteering: Nevada Boys State
+  volunteer-02.jpg                       - Volunteering: Critical Care Comics
   contact.jpg                            - Contact page photo (optional)
 
 Any slot with no matching image just shows a small dashed placeholder box
