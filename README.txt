@@ -21,3 +21,24 @@ not need any image files.
 
 Recommended: keep images under ~500KB each (resize/compress before adding)
 so the site stays fast to load.
+
+-------------------------------------------------------------------
+PROJECT PHOTOS, GALLERIES AND VIDEOS
+-------------------------------------------------------------------
+Each project has a thumbnail plus an optional gallery of extra photos
+and videos shown on its project page.
+
+  bu-04                         thumbnail (card + main photo)
+  bu-04_Caption Text            thumbnail with a caption under it
+  bu-04-2_CAD Model of Nozzle   gallery item #2 (photo or video)
+  bu-04-3_Static Fire Test      gallery item #3 ...
+
+- The number after the project code sets the gallery order.
+- Text after the underscore becomes the caption.
+- Photos: JPG, PNG or HEIC. Videos: MP4 or MOV (short clips; the
+  GitHub website caps uploads at 25 MB each).
+- Upload to the claude/busy-babbage-8xe2nq branch. Uploads are
+  resized/compressed, location data is stripped, and videos are
+  converted to web MP4 with a preview frame before going live.
+- Processed files live in images/ (thumbnails) and images/gallery/.
+

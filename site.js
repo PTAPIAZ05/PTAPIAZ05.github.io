@@ -55,7 +55,9 @@
     'section.sheet .contact-list li',
     'section.sheet .detail-header',
     'section.sheet .detail-photo',
-    'section.sheet .detail-block'
+    'section.sheet .detail-block',
+    'section.sheet .gallery-head',
+    'section.sheet .gallery-grid > *'
   ].join(','));
 
   var observer = new IntersectionObserver(function(entries){

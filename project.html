@@ -43,11 +43,14 @@
     </div>
 
     <div class="detail-layout">
-      <div class="photo-slot wide detail-photo">
-        <img class="photo" id="d-image" src="" alt=""
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="photo-fallback" id="d-image-fallback"></div>
-      </div>
+      <figure class="detail-figure">
+        <div class="photo-slot wide detail-photo" id="d-photo">
+          <img class="photo" id="d-image" alt=""
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="photo-fallback" id="d-image-fallback"></div>
+        </div>
+        <figcaption class="detail-caption" id="d-image-caption" hidden></figcaption>
+      </figure>
 
       <div class="detail-body">
         <div class="detail-block">
@@ -65,6 +68,15 @@
       </div>
     </div>
 
+    <!-- Extra photos & videos (filled in from projects-data.js) -->
+    <div class="gallery" id="d-gallery" hidden>
+      <div class="gallery-head">
+        <h3>Gallery</h3>
+        <span class="gallery-count" id="d-gallery-count"></span>
+      </div>
+      <div class="gallery-grid" id="d-gallery-grid"></div>
+    </div>
+
     <a href="projects.html" class="btn sage back-btn" id="back-to-section-btn">← Back to Projects</a>
   </div>
 </section>
@@ -77,6 +89,7 @@
 </footer>
 
 <script src="projects-data.js"></script>
+<script src="gallery.js"></script>
 <script>
   (function(){
     var params = new URLSearchParams(window.location.search);
@@ -103,9 +116,43 @@
     });
 
     var img = document.getElementById('d-image');
+    // Show the photo once it loads (and hide the placeholder box).
+    img.addEventListener('load', function(){
+      img.style.display = '';
+      document.getElementById('d-image-fallback').style.display = 'none';
+    });
     img.src = project.image;
     img.alt = project.title + ' project photo';
     document.getElementById('d-image-fallback').textContent = project.image;
+    if (project.imageCaption){
+      var capEl = document.getElementById('d-image-caption');
+      capEl.textContent = project.imageCaption;
+      capEl.hidden = false;
+    }
+
+    // Gallery: main photo first in the viewer, then the extra photos/videos.
+    var media = project.media || [];
+    var viewerItems = [{ type: 'image', src: project.image, caption: project.imageCaption || project.title }].concat(media);
+    ProjectGallery.setAll(viewerItems);
+    var photo = document.getElementById('d-photo');
+    photo.classList.add('is-zoomable');
+    photo.setAttribute('role', 'button');
+    photo.setAttribute('tabindex', '0');
+    photo.setAttribute('aria-label', 'View photos full size');
+    photo.addEventListener('click', function(){ ProjectGallery.open(viewerItems, 0); });
+    photo.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); ProjectGallery.open(viewerItems, 0); }
+    });
+    if (media.length){
+      var photos = media.filter(function(m){ return m.type === 'image'; }).length;
+      var videos = media.length - photos;
+      var parts = [];
+      if (photos) parts.push(photos + (photos === 1 ? ' photo' : ' photos'));
+      if (videos) parts.push(videos + (videos === 1 ? ' video' : ' videos'));
+      document.getElementById('d-gallery-count').textContent = parts.join(' · ');
+      ProjectGallery.render(document.getElementById('d-gallery-grid'), media, 1);
+      document.getElementById('d-gallery').hidden = false;
+    }
 
     var tagsEl = document.getElementById('d-tags');
     // Each tag links back to the Projects page filtered to that skill.
