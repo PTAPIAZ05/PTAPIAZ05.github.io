@@ -215,6 +215,17 @@ section.sheet:nth-of-type(even){background-color:#F4F7FF;}
   max-width:56ch;
 }
 
+.about-quote-cite{
+  display:block;
+  margin-top:8px;
+  font-family:'IBM Plex Sans', sans-serif;
+  font-size:0.88rem;
+  font-style:normal;
+  font-weight:600;
+  letter-spacing:0.02em;
+  color:var(--royal-deep);
+}
+
 /* ---------- Timeline Layout (Outside Hobbies section) ---------- */
 .timeline-container{
   position:relative;
