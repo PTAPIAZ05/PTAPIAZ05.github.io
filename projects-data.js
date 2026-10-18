@@ -149,7 +149,7 @@ const PROJECTS = {
     summary: "A bell nozzle designed and stress-tested for operation at 10,000 ft.",
     overview: "Analyzed and designed a bell nozzle optimized for theoretical operation at 10,000 ft altitude, applying rocket propulsion principles to geometry selection, structural validation, and performance optimization.",
     approach: "Selected a bell nozzle configuration based on comparative propulsion research and optimized the contour to 60% for thrust efficiency. Developed a full CAD model in SOLIDWORKS and ran a Finite Element Analysis to identify stress concentrations and structural deformations under high-altitude pressure conditions.",
-    results: "The nozzle sustained over 45 Newtons of gas pressure without significant deformation, validated through FEA simulation and a physical static fire test. This confirmed structural integrity and performance viability at target conditions.",
+    results: "The nozzle sustained over 46 PSI of thrust pressure without significant deformation, validated through FEA simulation and a physical static fire test. This confirmed structural integrity and performance viability at target conditions.",
     media: [
       { type: "video", src: "images/gallery/bu-04-1.mp4", thumb: "images/gallery/bu-04-1-sm.jpg", caption: "Static Fire", poster: "images/gallery/bu-04-1-poster.jpg", duration: 8 },
       { type: "image", src: "images/gallery/bu-04-2.jpg", thumb: "images/gallery/bu-04-2-sm.jpg", caption: "CAD Model of Nozzle" },
