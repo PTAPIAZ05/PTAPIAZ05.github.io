@@ -27,7 +27,9 @@ const PROJECTS = {
     approach: "Developed a Sun Monitor that integrated a microprocessor, dual linear array cameras, ZigBee communication, and an SD card for data storage. Units were deployed at Ivanpah Solar Facility, and the collected data was processed in MATLAB with an offset-correction algorithm to compensate for gravitational and wind-induced drift.",
     results: "Delivered a sensor that was 18% lighter than commercial equivalents at a fraction of the market cost. Achieved 96% data accuracy post-correction, enabling reliable heliostat alignment feedback.",
     media: [
-      { type: "image", src: "images/gallery/research-01-1.jpg", thumb: "images/gallery/research-01-1-sm.jpg", caption: "In-Hand Image of Sun Monitor" }
+      { type: "image", src: "images/gallery/research-01-1.jpg", thumb: "images/gallery/research-01-1-sm.jpg", caption: "In-Hand Image of Sun Monitor" },
+      { type: "image", src: "images/gallery/research-01-2.jpg", thumb: "images/gallery/research-01-2-sm.jpg", caption: "MATLAB Graph Highlighting Wind Fluctuations" },
+      { type: "image", src: "images/gallery/research-01-3.jpg", thumb: "images/gallery/research-01-3-sm.jpg", caption: "MATLAB Graph Highlighting Structural Deflection due to Gravity Bending" }
     ]
   },
 
@@ -41,7 +43,9 @@ const PROJECTS = {
     overview: "Developed a low-cost emulation platform for testing commercial building energy management strategies with a battery-supercapacitor system to reduce energy cost.",
     approach: "Assisted in the design and set-up of a PV-Battery-Load emulator using a dual-battery looping configuration and supercapacitors to replicate HVAC transient power demands. This enabled repeatable lab-scale testing without physical HVAC infrastructure.",
     results: "Achieved a 37% reduction in platform cost versus commercial measurement systems by eliminating active energy consumption, with continued development targeting measurement accuracy improvements.",
-    media: []
+    media: [
+      { type: "image", src: "images/gallery/research-02-1.jpg", thumb: "images/gallery/research-02-1-sm.jpg", caption: "Initial Design for Emulator" }
+    ]
   },
 
   "ndot-01": {
@@ -54,7 +58,9 @@ const PROJECTS = {
     overview: "Performed quality assurance inspections on guard and barrier rail replacement along U.S. Highway 95, a federal corridor serving commuter and freight traffic in Clark County, Nevada.",
     approach: "Conducted field inspections verifying guard rail flare rate, deflection distance, post spacing, and structural alignment against NDoT’s specifications. Performed material compliance checks by confirming the correct galvanized steel beams were used, concrete mix design, soil compaction, and Buy America compliance on federally funded infrastructure.",
     results: "Verified full installation and compliance across barrier and guard rail systems on an active 20-mile federal highway. Contributed to public safety on one of Southern Nevada’s primary transportation corridors.",
-    media: []
+    media: [
+      { type: "image", src: "images/gallery/ndot-01-1.jpg", thumb: "images/gallery/ndot-01-1-sm.jpg", caption: "Inspection of New Postings" }
+    ]
   },
 
   "ndot-02": {
@@ -71,7 +77,9 @@ const PROJECTS = {
       { type: "image", src: "images/gallery/ndot-02-1.jpg", thumb: "images/gallery/ndot-02-1-sm.jpg", caption: "Bedding Material Being Placed" },
       { type: "image", src: "images/gallery/ndot-02-2.jpg", thumb: "images/gallery/ndot-02-2-sm.jpg", caption: "Footing Being Placed" },
       { type: "image", src: "images/gallery/ndot-02-3.jpg", thumb: "images/gallery/ndot-02-3-sm.jpg", caption: "Rebar Being Tested for Culvert" },
-      { type: "image", src: "images/gallery/ndot-02-4.jpg", thumb: "images/gallery/ndot-02-4-sm.jpg", caption: "Humid Room to Test Cured Concrete from Culvert" }
+      { type: "image", src: "images/gallery/ndot-02-4.jpg", thumb: "images/gallery/ndot-02-4-sm.jpg", caption: "Humid Room to Test Cured Concrete from Culvert" },
+      { type: "image", src: "images/gallery/ndot-02-5.jpg", thumb: "images/gallery/ndot-02-5-sm.jpg", caption: "Completed Culvert" },
+      { type: "image", src: "images/gallery/ndot-02-6.jpg", thumb: "images/gallery/ndot-02-6-sm.jpg", caption: "Sand Cone Test to Examine Soil Density" }
     ]
   },
 
@@ -88,7 +96,10 @@ const PROJECTS = {
     results: "Verified fencing and drainage compliance across a federal highway corridor, ensuring the structural integrity of 13 wildlife crossings and long-term roadway performance through material-compliant repairs and erosion control measures.",
     media: [
       { type: "image", src: "images/gallery/ndot-03-1.jpg", thumb: "images/gallery/ndot-03-1-sm.jpg", caption: "Tortoise On-Site" },
-      { type: "video", src: "images/gallery/ndot-03-2.mp4", thumb: "images/gallery/ndot-03-2-sm.jpg", caption: "Soil Being Tested for Plasticity and Compaction", poster: "images/gallery/ndot-03-2-poster.jpg", duration: 10 }
+      { type: "video", src: "images/gallery/ndot-03-2.mp4", thumb: "images/gallery/ndot-03-2-sm.jpg", caption: "Soil Being Tested for Plasticity and Compaction", poster: "images/gallery/ndot-03-2-poster.jpg", duration: 10 },
+      { type: "image", src: "images/gallery/ndot-03-3.jpg", thumb: "images/gallery/ndot-03-3-sm.jpg", caption: "Drainage System with Newly Placed Rip-Rap" },
+      { type: "image", src: "images/gallery/ndot-03-4.jpg", thumb: "images/gallery/ndot-03-4-sm.jpg", caption: "Coyote Spotted on Site" },
+      { type: "image", src: "images/gallery/ndot-03-5.jpg", thumb: "images/gallery/ndot-03-5-sm.jpg", caption: "Performing a Survey Test Using a GPS Receiver with a Tripod" }
     ]
   },
 
@@ -137,7 +148,10 @@ const PROJECTS = {
     overview: "Conceived and built a constrained acrylic truss optimized for maximum load-bearing capacity within strict geometric and material specifications.",
     approach: "Developed a MATLAB analysis tool to evaluate multiple truss configurations, computing member forces, tension/compression states, critical member identification, and buckling risk. Iteratively refined the truss geometry using the code output to maximize structural efficiency before fabrication.",
     results: "Exceeded the 2 lb load requirement by 35%, sustaining 2.7 lb for 120 seconds before buckling, which demonstrated effective structural optimization through computational analysis prior to physical testing.",
-    media: []
+    media: [
+      { type: "image", src: "images/gallery/bu-03-1.jpg", thumb: "images/gallery/bu-03-1-sm.jpg", caption: "My Team and Our Truss" },
+      { type: "image", src: "images/gallery/bu-03-2.jpg", thumb: "images/gallery/bu-03-2-sm.jpg", caption: "MATLAB Result of Our Load and the Effects" }
+    ]
   },
 
   "bu-04": {
@@ -152,8 +166,11 @@ const PROJECTS = {
     results: "The nozzle sustained over 46 PSI of thrust pressure without significant deformation, validated through FEA simulation and a physical static fire test. This confirmed structural integrity and performance viability at target conditions.",
     media: [
       { type: "video", src: "images/gallery/bu-04-1.mp4", thumb: "images/gallery/bu-04-1-sm.jpg", caption: "Static Fire", poster: "images/gallery/bu-04-1-poster.jpg", duration: 8 },
-      { type: "image", src: "images/gallery/bu-04-2.jpg", thumb: "images/gallery/bu-04-2-sm.jpg", caption: "CAD Model of Nozzle" },
-      { type: "image", src: "images/gallery/bu-04-3.jpg", thumb: "images/gallery/bu-04-3-sm.jpg", caption: "Preparing for Static Fire" }
+      { type: "image", src: "images/gallery/bu-04-2.jpg", thumb: "images/gallery/bu-04-2-sm.jpg", caption: "In-hand Nozzle" },
+      { type: "image", src: "images/gallery/bu-04-3.jpg", thumb: "images/gallery/bu-04-3-sm.jpg", caption: "Preparing for Static Fire" },
+      { type: "image", src: "images/gallery/bu-04-4.jpg", thumb: "images/gallery/bu-04-4-sm.jpg", caption: "FEA of Rocket Nozzle" },
+      { type: "image", src: "images/gallery/bu-04-5.jpg", thumb: "images/gallery/bu-04-5-sm.jpg", caption: "Raw Factor of Safety Plot of Rocket Nozzle" },
+      { type: "image", src: "images/gallery/bu-04-6.jpg", thumb: "images/gallery/bu-04-6-sm.jpg", caption: "Electronic Schematic of Microcontroller" }
     ]
   },
 

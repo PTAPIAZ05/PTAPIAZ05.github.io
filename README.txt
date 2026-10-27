@@ -34,6 +34,8 @@ and videos shown on its project page.
   bu-04-3_Static Fire Test      gallery item #3 ...
 
 - The number after the project code sets the gallery order.
+- Card codes also work: B-03_NewPhoto1_Caption.png is added to the end
+  of B-03's gallery (NewPhoto1, NewPhoto2, ... keep their order).
 - Text after the underscore becomes the caption.
 - Photos: JPG, PNG or HEIC. Videos: MP4 or MOV (short clips; the
   GitHub website caps uploads at 25 MB each).
