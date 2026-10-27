@@ -716,11 +716,11 @@ footer a{color:var(--on-royal);}
   color:var(--sage);
 }
 .gallery-count{font-size:0.85rem; color:var(--steel);}
-/* Same idea for the gallery: 4 per row, partial rows centered. */
+/* Gallery: 4 per row, rows fill from the left (not centered). */
 .gallery-grid{
   display:flex;
   flex-wrap:wrap;
-  justify-content:center;
+  justify-content:flex-start;
   gap:14px;
 }
 .gallery-grid > *{flex:0 0 calc((100% - 42px) / 4); min-width:0;}
