@@ -45,58 +45,103 @@
           I am open to internships, collaborations, and any full-time opportunities. Feel free to send a message below and check out the links <span class="only-wide">to the right</span><span class="only-narrow">further down</span>!
         </p>
 
-        <!-- This form posts to Formspree, a free form-backend service, so a message
-             actually gets emailed to you without ever putting your address in this
-             page's source. One-time setup (about 2 minutes):
-               1. Go to https://formspree.io and sign up free with your email.
-               2. Create a new form; Formspree gives you a form ID like "abcwxyz".
-               3. Replace YOUR_FORM_ID below with that ID.
-               4. Formspree emails you a confirmation link the first time someone
-                  submits — click it once to activate the form.
-             Until you swap in a real form ID, submissions will fail (Formspree
-             will show an error), so do this before sharing the site. -->
-        <form class="contact-form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <!-- Contact form → Formspree (https://formspree.io, form ID xqppyrqp).
+             Messages are emailed to Pedro without his address appearing in this
+             page. With JavaScript the form sends in the background and shows the
+             result here; without it, the browser posts straight to Formspree. -->
+        <form class="contact-form" id="contact-form" action="https://formspree.io/f/xqppyrqp" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="New message from your portfolio">
+          <!-- Spam trap: hidden from people; bots that fill it in are discarded by Formspree -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="_gotcha">Leave this empty</label>
+            <input type="text" id="_gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
           <div>
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" autocomplete="name" required>
+            <span class="field-error" data-error-for="name"></span>
           </div>
           <div>
             <label for="email">Your email</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+            <span class="field-error" data-error-for="email"></span>
           </div>
           <div>
             <label for="message">Message</label>
             <textarea id="message" name="message" required></textarea>
+            <span class="field-error" data-error-for="message"></span>
           </div>
-          <button type="submit" class="btn sage" style="border:none; cursor:pointer; justify-self:start;">Send Message</button>
-          <p id="form-status" style="font-size:0.85rem; margin:4px 0 0; display:none;"></p>
+          <button type="submit" class="btn sage" id="contact-submit" style="border:none; cursor:pointer; justify-self:start;">Send Message</button>
+          <p id="form-status" class="form-status" role="status" aria-live="polite" hidden></p>
         </form>
 
         <script>
           (function(){
             var form = document.getElementById('contact-form');
             var status = document.getElementById('form-status');
+            var button = document.getElementById('contact-submit');
+            var LABELS = { name: 'your name', email: 'your email', message: 'a message' };
+
+            function showStatus(kind, html){
+              status.hidden = false;
+              status.className = 'form-status is-' + kind;
+              status.innerHTML = html;
+            }
+            function setFieldError(field, msg){
+              var input = form.elements[field];
+              var slot = form.querySelector('[data-error-for="' + field + '"]');
+              if (input) input.setAttribute('aria-invalid', msg ? 'true' : 'false');
+              if (slot) slot.textContent = msg || '';
+            }
+            function clearErrors(){
+              Object.keys(LABELS).forEach(function(f){ setFieldError(f, ''); });
+            }
+            // Quick check before sending, so obvious mistakes don't need a round trip.
+            function validate(){
+              var ok = true;
+              Object.keys(LABELS).forEach(function(f){
+                var el = form.elements[f];
+                if (!el.value.trim()){ setFieldError(f, 'Please enter ' + LABELS[f] + '.'); ok = false; }
+                else if (f === 'email' && !el.checkValidity()){ setFieldError(f, 'Please enter a valid email address.'); ok = false; }
+              });
+              return ok;
+            }
+            var FALLBACK = 'Something went wrong sending your message. Please try again, or reach out on ' +
+              '<a href="https://www.linkedin.com/in/pedro-tapia-zamora" target="_blank" rel="noopener">LinkedIn</a>.';
+
             form.addEventListener('submit', function(e){
               e.preventDefault();
-              status.style.display = 'block';
-              status.style.color = 'var(--steel)';
-              status.textContent = 'Sending…';
+              clearErrors();
+              if (!validate()){
+                showStatus('error', 'Please fix the highlighted fields.');
+                return;
+              }
+              button.disabled = true;
+              button.textContent = 'Sending…';
+              showStatus('info', 'Sending your message…');
+
               fetch(form.action, {
                 method: 'POST',
                 body: new FormData(form),
                 headers: { 'Accept': 'application/json' }
               }).then(function(res){
-                if (res.ok){
-                  status.style.color = 'var(--sage)';
-                  status.textContent = 'Message sent — thanks for reaching out!';
-                  form.reset();
-                } else {
-                  status.style.color = '#e0765a';
-                  status.textContent = 'Something went wrong — the form may not be set up yet. Try emailing directly via LinkedIn.';
-                }
+                return res.json().catch(function(){ return {}; }).then(function(data){
+                  if (res.ok){
+                    form.reset();
+                    showStatus('success', 'Message sent — thanks for reaching out! I’ll get back to you soon.');
+                    return;
+                  }
+                  // Formspree returns { errors: [{ field, message }] } for rejected fields.
+                  var errs = (data && data.errors) || [];
+                  var fieldErrs = errs.filter(function(er){ return er.field && LABELS[er.field]; });
+                  fieldErrs.forEach(function(er){ setFieldError(er.field, er.message); });
+                  showStatus('error', fieldErrs.length ? 'Please fix the highlighted fields.' : FALLBACK);
+                });
               }).catch(function(){
-                status.style.color = '#e0765a';
-                status.textContent = 'Something went wrong — the form may not be set up yet. Try emailing directly via LinkedIn.';
+                showStatus('error', FALLBACK);
+              }).then(function(){
+                button.disabled = false;
+                button.textContent = 'Send Message';
               });
             });
           })();
