@@ -51,11 +51,6 @@
              result here; without it, the browser posts straight to Formspree. -->
         <form class="contact-form" id="contact-form" action="https://formspree.io/f/xqppyrqp" method="POST" novalidate>
           <input type="hidden" name="_subject" value="New message from your portfolio">
-          <!-- Spam trap: hidden from people; bots that fill it in are discarded by Formspree -->
-          <div class="hp-field" aria-hidden="true">
-            <label for="_gotcha">Leave this empty</label>
-            <input type="text" id="_gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
-          </div>
           <div>
             <label for="name">Name</label>
             <input type="text" id="name" name="name" autocomplete="name" required>
