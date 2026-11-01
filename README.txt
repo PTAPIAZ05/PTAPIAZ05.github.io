@@ -44,3 +44,9 @@ and videos shown on its project page.
   converted to web MP4 with a preview frame before going live.
 - Processed files live in images/ (thumbnails) and images/gallery/.
 
+-------------------------------------------------------------------
+RESUME
+-------------------------------------------------------------------
+The Contact page links to PedroTZ_Resume.pdf. To update it, upload a
+new PDF and the link is pointed at it.
+

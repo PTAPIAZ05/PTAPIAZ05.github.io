@@ -59,7 +59,9 @@ const PROJECTS = {
     approach: "Conducted field inspections verifying guard rail flare rate, deflection distance, post spacing, and structural alignment against NDoT’s specifications. Performed material compliance checks by confirming the correct galvanized steel beams were used, concrete mix design, soil compaction, and Buy America compliance on federally funded infrastructure.",
     results: "Verified full installation and compliance across barrier and guard rail systems on an active 20-mile federal highway. Contributed to public safety on one of Southern Nevada’s primary transportation corridors.",
     media: [
-      { type: "image", src: "images/gallery/ndot-01-1.jpg", thumb: "images/gallery/ndot-01-1-sm.jpg", caption: "Inspection of New Postings" }
+      { type: "image", src: "images/gallery/ndot-01-1.jpg", thumb: "images/gallery/ndot-01-1-sm.jpg", caption: "Inspection of New Postings" },
+      { type: "image", src: "images/gallery/ndot-01-2.jpg", thumb: "images/gallery/ndot-01-2-sm.jpg", caption: "Full View of Newly Installed Barrier Rail" },
+      { type: "image", src: "images/gallery/ndot-01-3.jpg", thumb: "images/gallery/ndot-01-3-sm.jpg", caption: "Full View of Newly Installed Guard Rail" }
     ]
   },
 
