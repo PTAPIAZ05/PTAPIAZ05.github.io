@@ -7,10 +7,12 @@
    optional gallery (media). See README.txt for how to name uploads.
 
    To add a new project:
-   1. Add an entry below with a unique id.
-   2. Add a card in projects.html that links to
-      project?id=YOUR-ID
-   That's it — the detail page builds itself from this file.
+   1. Add an entry below with a unique id (e.g. "bu-07").
+   2. Add a card in projects.html that links to its clean
+      address (bu-07 -> b-07, ndot-04 -> n-04, research-03 -> r-03).
+   3. Run  node tools/build-project-pages.js  to (re)build the
+      per-project pages (b-07.html etc.). Re-run it after editing
+      project.html or a project's title/summary/thumbnail here.
    ======================================================= */
 
 const PROJECTS = {

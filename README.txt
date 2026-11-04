@@ -50,3 +50,14 @@ RESUME
 The Contact page links to PedroTZ_Resume.pdf. To update it, upload a
 new PDF and the link is pointed at it.
 
+-------------------------------------------------------------------
+PROJECT PAGE ADDRESSES
+-------------------------------------------------------------------
+Each project has a clean address named after its card label:
+pedrotapiazamora.com/b-03, /n-01, /r-02, ... These pages (b-01.html
+etc.) are generated from the project.html template by
+    node tools/build-project-pages.js
+Re-run it after changing project.html, adding a project, or editing a
+project's title, summary or thumbnail. Old project?id=... links
+redirect to the clean address.
+

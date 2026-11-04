@@ -93,8 +93,13 @@
 <script>
   (function(){
     var params = new URLSearchParams(window.location.search);
-    var id = params.get('id');
+    var id = window.PROJECT_ID || params.get('id');
     var project = PROJECTS[id];
+    // Old links (project?id=bu-03) move to the clean address (/b-03).
+    if (!window.PROJECT_ID && project){
+      window.location.replace(id.replace(/^bu-/, 'b-').replace(/^ndot-/, 'n-').replace(/^research-/, 'r-'));
+      return;
+    }
     var root = document.getElementById('detail-root');
 
     if (!project){

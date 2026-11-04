@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Generated from project.html by tools/build-project-pages.js. Edit the template, not this file. -->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title id="page-title">Room Temperature Sensor — Pedro Tapia Zamora</title>
+<meta name="description" content="A handheld, low-power temperature monitor with a display and adjustable alarm.">
+<link rel="canonical" href="https://pedrotapiazamora.com/b-02">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Room Temperature Sensor — Pedro Tapia Zamora">
+<meta property="og:description" content="A handheld, low-power temperature monitor with a display and adjustable alarm.">
+<meta property="og:url" content="https://pedrotapiazamora.com/b-02">
+<meta property="og:image" content="https://pedrotapiazamora.com/images/bu-02.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body>
+
+<div class="titleblock">
+  <div class="titleblock-inner">
+    <div>
+      <h1 class="tb-name"><a href="./">PEDRO TAPIA ZAMORA</a></h1>
+      <div class="tb-role"><strong>Mechanical Engineering Student — Clean Energy · Energy Storage · Aerospace · Manufacturing</strong></div>
+    </div>
+  </div>
+</div>
+
+<nav class="index">
+  <div class="wrap">
+    <a href="./"><span class="num">01</span>HOME</a>
+    <a href="projects" class="current"><span class="num">02</span>PROJECTS</a>
+    <a href="volunteering"><span class="num">03</span>VOLUNTEERING</a>
+    <a href="contact"><span class="num">04</span>CONTACT</a>
+  </div>
+</nav>
+
+<section class="sheet plain" id="detail-root">
+  <div class="wrap">
+    <a href="projects" class="back-link" id="back-to-section">← Back to Projects</a>
+
+    <div class="detail-header">
+      <div class="detail-eyebrow" id="d-section">SECTION</div>
+      <h2 id="d-title">Loading project…</h2>
+      <div class="tags" id="d-tags"></div>
+    </div>
+
+    <div class="detail-layout">
+      <figure class="detail-figure">
+        <div class="photo-slot wide detail-photo" id="d-photo">
+          <img class="photo" id="d-image" alt=""
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="photo-fallback" id="d-image-fallback"></div>
+        </div>
+        <figcaption class="detail-caption" id="d-image-caption" hidden></figcaption>
+      </figure>
+
+      <div class="detail-body">
+        <div class="detail-block">
+          <h3>Overview</h3>
+          <p id="d-overview"></p>
+        </div>
+        <div class="detail-block">
+          <h3>Approach</h3>
+          <p id="d-approach"></p>
+        </div>
+        <div class="detail-block">
+          <h3>Results</h3>
+          <p id="d-results"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Extra photos & videos (filled in from projects-data.js) -->
+    <div class="gallery" id="d-gallery" hidden>
+      <div class="gallery-head">
+        <h3>Gallery</h3>
+        <span class="gallery-count" id="d-gallery-count"></span>
+      </div>
+      <div class="gallery-grid" id="d-gallery-grid"></div>
+    </div>
+
+    <a href="projects" class="btn sage back-btn" id="back-to-section-btn">← Back to Projects</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Pedro Tapia Zamora</span>
+    <span><a href="contact">Get in touch →</a></span>
+  </div>
+</footer>
+
+<script>window.PROJECT_ID = "bu-02";</script>
+<script src="projects-data.js?v=2"></script>
+<script src="gallery.js?v=2"></script>
+<script>
+  (function(){
+    var params = new URLSearchParams(window.location.search);
+    var id = window.PROJECT_ID || params.get('id');
+    var project = PROJECTS[id];
+    // Old links (project?id=bu-03) move to the clean address (/b-03).
+    if (!window.PROJECT_ID && project){
+      window.location.replace(id.replace(/^bu-/, 'b-').replace(/^ndot-/, 'n-').replace(/^research-/, 'r-'));
+      return;
+    }
+    var root = document.getElementById('detail-root');
+
+    if (!project){
+      root.querySelector('.detail-header').innerHTML =
+        '<div class="detail-eyebrow">NOT FOUND</div><h2>Project not found</h2>' +
+        '<p style="color:var(--steel); margin-top:12px;">This project link doesn\'t match anything yet. Head back and pick one from the list.</p>';
+      root.querySelector('.detail-layout').style.display = 'none';
+      return;
+    }
+
+    document.getElementById('page-title').textContent = project.title + ' — Pedro Tapia Zamora';
+    document.getElementById('d-section').textContent = project.section;
+    document.getElementById('d-title').textContent = project.title;
+    // Fill each section; hide any section that has no text yet.
+    ['overview', 'approach', 'results'].forEach(function(key){
+      var el = document.getElementById('d-' + key);
+      el.textContent = project[key] || '';
+      if (!project[key]) el.closest('.detail-block').style.display = 'none';
+    });
+
+    var img = document.getElementById('d-image');
+    // Show the photo once it loads (and hide the placeholder box).
+    img.addEventListener('load', function(){
+      img.style.display = '';
+      document.getElementById('d-image-fallback').style.display = 'none';
+    });
+    img.src = project.image;
+    img.alt = project.title + ' project photo';
+    document.getElementById('d-image-fallback').textContent = 'Photos coming soon';
+    if (project.imageCaption){
+      var capEl = document.getElementById('d-image-caption');
+      capEl.textContent = project.imageCaption;
+      capEl.hidden = false;
+    }
+
+    // Gallery: main photo first in the viewer, then the extra photos/videos.
+    var media = project.media || [];
+    var viewerItems = [{ type: 'image', src: project.image, caption: project.imageCaption || project.title }].concat(media);
+    ProjectGallery.setAll(viewerItems);
+    var photo = document.getElementById('d-photo');
+    // Only offer the full-screen viewer once a photo has actually loaded.
+    function photoReady(){ return img.naturalWidth > 0 && img.style.display !== 'none'; }
+    img.addEventListener('load', function(){ photo.classList.add('is-zoomable'); });
+    photo.setAttribute('role', 'button');
+    photo.setAttribute('tabindex', '0');
+    photo.setAttribute('aria-label', 'View photos full size');
+    photo.addEventListener('click', function(){ if (photoReady()) ProjectGallery.open(viewerItems, 0); });
+    photo.addEventListener('keydown', function(e){
+      if ((e.key === 'Enter' || e.key === ' ') && photoReady()){ e.preventDefault(); ProjectGallery.open(viewerItems, 0); }
+    });
+    if (media.length){
+      var photos = media.filter(function(m){ return m.type === 'image'; }).length;
+      var videos = media.length - photos;
+      var parts = [];
+      if (photos) parts.push(photos + (photos === 1 ? ' photo' : ' photos'));
+      if (videos) parts.push(videos + (videos === 1 ? ' video' : ' videos'));
+      document.getElementById('d-gallery-count').textContent = parts.join(' · ');
+      ProjectGallery.render(document.getElementById('d-gallery-grid'), media, 1);
+      document.getElementById('d-gallery').hidden = false;
+    }
+
+    var tagsEl = document.getElementById('d-tags');
+    // Each tag links back to the Projects page filtered to that skill.
+    project.tags.forEach(function(tag){
+      var link = document.createElement('a');
+      link.textContent = tag;
+      link.href = 'projects?tag=' + encodeURIComponent(tag);
+      link.title = 'See all projects tagged ' + tag;
+      tagsEl.appendChild(link);
+    });
+
+    var sectionLink = project.sectionLink || 'projects';
+    document.getElementById('back-to-section').href = sectionLink;
+    document.getElementById('back-to-section-btn').href = sectionLink;
+  })();
+</script>
+
+<script src="site.js?v=2"></script>
+</body>
+</html>
