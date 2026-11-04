@@ -9,7 +9,7 @@
    To add a new project:
    1. Add an entry below with a unique id.
    2. Add a card in projects.html that links to
-      project.html?id=YOUR-ID
+      project?id=YOUR-ID
    That's it — the detail page builds itself from this file.
    ======================================================= */
 
@@ -17,7 +17,7 @@ const PROJECTS = {
 
   "research-01": {
     section: "Formal Research",
-    sectionLink: "projects.html#research",
+    sectionLink: "projects#research",
     title: "Heliostat Optimization",
     image: "images/research-01.jpg",
     imageCaption: "Sun Monitor Placement on Solar Panel",
@@ -35,7 +35,7 @@ const PROJECTS = {
 
   "research-02": {
     section: "Formal Research",
-    sectionLink: "projects.html#research",
+    sectionLink: "projects#research",
     title: "Hybrid Battery-Supercapacitor HVAC Emulator",
     image: "images/research-02.jpg",
     tags: ["Renewable Energy", "Simulation & Modeling", "Testing & Validation"],
@@ -50,7 +50,7 @@ const PROJECTS = {
 
   "ndot-01": {
     section: "Nevada Department of Transportation",
-    sectionLink: "projects.html#ndot",
+    sectionLink: "projects#ndot",
     title: "Barrier & Guard Rail Replacement",
     image: "images/ndot-01.jpg",
     imageCaption: "NDoT Plan Sheet",
@@ -69,7 +69,7 @@ const PROJECTS = {
 
   "ndot-02": {
     section: "Nevada Department of Transportation",
-    sectionLink: "projects.html#ndot",
+    sectionLink: "projects#ndot",
     title: "Culvert Headwall Replacement",
     image: "images/ndot-02.jpg",
     imageCaption: "NDoT Structural Plan Sheet",
@@ -91,7 +91,7 @@ const PROJECTS = {
 
   "ndot-03": {
     section: "Nevada Department of Transportation",
-    sectionLink: "projects.html#ndot",
+    sectionLink: "projects#ndot",
     title: "Protective Tortoise Fencing & Drainage Systems",
     image: "images/ndot-03.jpg",
     imageCaption: "NDoT Plan Sheet",
@@ -112,7 +112,7 @@ const PROJECTS = {
 
   "bu-01": {
     section: "Boston University",
-    sectionLink: "projects.html#bu",
+    sectionLink: "projects#bu",
     title: "Autonomous Desk Cleaning Robot",
     image: "images/bu-01.jpg",
     tags: ["Sensors & Embedded Systems", "CAD", "Prototyping & Fabrication", "Testing & Validation"],
@@ -132,7 +132,7 @@ const PROJECTS = {
 
   "bu-02": {
     section: "Boston University",
-    sectionLink: "projects.html#bu",
+    sectionLink: "projects#bu",
     title: "Room Temperature Sensor",
     image: "images/bu-02.jpg",
     tags: ["Sensors & Embedded Systems", "CAD", "Prototyping & Fabrication"],
@@ -147,7 +147,7 @@ const PROJECTS = {
 
   "bu-03": {
     section: "Boston University",
-    sectionLink: "projects.html#bu",
+    sectionLink: "projects#bu",
     title: "Acrylic Truss",
     image: "images/bu-03.jpg",
     tags: ["MATLAB", "Structures", "Optimization", "Testing & Validation"],
@@ -163,7 +163,7 @@ const PROJECTS = {
 
   "bu-04": {
     section: "Boston University",
-    sectionLink: "projects.html#bu",
+    sectionLink: "projects#bu",
     title: "Rocket Nozzle",
     image: "images/bu-04.jpg",
     tags: ["CAD", "Simulation & Modeling", "Structures", "Testing & Validation"],
@@ -183,7 +183,7 @@ const PROJECTS = {
 
   "bu-05": {
     section: "Boston University",
-    sectionLink: "projects.html#bu",
+    sectionLink: "projects#bu",
     title: "Central American Rural Community Water System Improvement Project",
     image: "images/bu-05.jpg",
     imageCaption: "EPANET Water Distribution Model",

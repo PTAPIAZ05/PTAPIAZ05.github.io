@@ -17,7 +17,7 @@
 <div class="titleblock">
   <div class="titleblock-inner">
     <div>
-      <h1 class="tb-name"><a href="index.html">PEDRO TAPIA ZAMORA</a></h1>
+      <h1 class="tb-name"><a href="./">PEDRO TAPIA ZAMORA</a></h1>
       <div class="tb-role"><strong>Mechanical Engineering Student — Clean Energy · Energy Storage · Aerospace · Manufacturing</strong></div>
     </div>
   </div>
@@ -25,16 +25,16 @@
 
 <nav class="index">
   <div class="wrap">
-    <a href="index.html"><span class="num">01</span>HOME</a>
-    <a href="projects.html" class="current"><span class="num">02</span>PROJECTS</a>
-    <a href="volunteering.html"><span class="num">03</span>VOLUNTEERING</a>
-    <a href="contact.html"><span class="num">04</span>CONTACT</a>
+    <a href="./"><span class="num">01</span>HOME</a>
+    <a href="projects" class="current"><span class="num">02</span>PROJECTS</a>
+    <a href="volunteering"><span class="num">03</span>VOLUNTEERING</a>
+    <a href="contact"><span class="num">04</span>CONTACT</a>
   </div>
 </nav>
 
 <section class="sheet plain" id="detail-root">
   <div class="wrap">
-    <a href="projects.html" class="back-link" id="back-to-section">← Back to Projects</a>
+    <a href="projects" class="back-link" id="back-to-section">← Back to Projects</a>
 
     <div class="detail-header">
       <div class="detail-eyebrow" id="d-section">SECTION</div>
@@ -77,14 +77,14 @@
       <div class="gallery-grid" id="d-gallery-grid"></div>
     </div>
 
-    <a href="projects.html" class="btn sage back-btn" id="back-to-section-btn">← Back to Projects</a>
+    <a href="projects" class="btn sage back-btn" id="back-to-section-btn">← Back to Projects</a>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <span>© 2026 Pedro Tapia Zamora</span>
-    <span><a href="contact.html">Get in touch →</a></span>
+    <span><a href="contact">Get in touch →</a></span>
   </div>
 </footer>
 
@@ -159,12 +159,12 @@
     project.tags.forEach(function(tag){
       var link = document.createElement('a');
       link.textContent = tag;
-      link.href = 'projects.html?tag=' + encodeURIComponent(tag);
+      link.href = 'projects?tag=' + encodeURIComponent(tag);
       link.title = 'See all projects tagged ' + tag;
       tagsEl.appendChild(link);
     });
 
-    var sectionLink = project.sectionLink || 'projects.html';
+    var sectionLink = project.sectionLink || 'projects';
     document.getElementById('back-to-section').href = sectionLink;
     document.getElementById('back-to-section-btn').href = sectionLink;
   })();

@@ -5,7 +5,7 @@
    The filter buttons are built from the tags already on the
    cards in projects.html, so adding or renaming a tag on a
    card updates the filter automatically. The chosen tag is
-   kept in the URL (projects.html?tag=CAD) so a filtered view
+   kept in the URL (projects?tag=CAD) so a filtered view
    can be shared or linked to from a project's detail page.
    ======================================================= */
 
