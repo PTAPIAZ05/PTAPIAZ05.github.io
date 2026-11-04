@@ -156,7 +156,7 @@ const PROJECTS = {
     approach: "Developed a MATLAB analysis tool to evaluate multiple truss configurations, computing member forces, tension/compression states, critical member identification, and buckling risk. Iteratively refined the truss geometry using the code output to maximize structural efficiency before fabrication.",
     results: "Exceeded the 2 lb load requirement by 35%, sustaining 2.7 lb for 120 seconds before buckling, which demonstrated effective structural optimization through computational analysis prior to physical testing.",
     media: [
-      { type: "image", src: "images/gallery/bu-04-1.jpg", thumb: "images/gallery/bu-04-1-sm.jpg", caption: "My Team and Our Truss" },
+      { type: "image", src: "images/gallery/bu-04-1.jpg", thumb: "images/gallery/bu-04-1-sm.jpg", caption: "In Hand Image of the Truss" },
       { type: "image", src: "images/gallery/bu-04-2.jpg", thumb: "images/gallery/bu-04-2-sm.jpg", caption: "MATLAB Result of Our Load and the Effects" }
     ]
   },
