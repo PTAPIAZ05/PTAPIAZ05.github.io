@@ -277,12 +277,12 @@ section.sheet:nth-of-type(even){background-color:#F4F7FF;}
 }
 
 /* ---------- Project / hobby cards with 3D projection hover ---------- */
-/* Flex rows so a short last row (e.g. 2 cards under 3) sits centered.
-   3 per row on desktop, 2 on tablets, 1 on phones. */
+/* Project cards: 3 per row on desktop, 2 on tablets, 1 on phones.
+   Rows fill from the left (short last rows are not centered). */
 .card-grid{
   display:flex;
   flex-wrap:wrap;
-  justify-content:center;
+  justify-content:flex-start;
   gap:20px;
   perspective:1000px;
 }

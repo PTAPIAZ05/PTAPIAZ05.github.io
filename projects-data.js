@@ -145,39 +145,39 @@ const PROJECTS = {
     ]
   },
 
-  "bu-03": {
+  "bu-04": {
     section: "Boston University",
     sectionLink: "projects#bu",
     title: "Acrylic Truss",
-    image: "images/bu-03.jpg",
+    image: "images/bu-04.jpg",
     tags: ["MATLAB", "Structures", "Optimization", "Testing & Validation"],
     summary: "An acrylic truss designed for maximum load within tight size and material limits.",
     overview: "Conceived and built a constrained acrylic truss optimized for maximum load-bearing capacity within strict geometric and material specifications.",
     approach: "Developed a MATLAB analysis tool to evaluate multiple truss configurations, computing member forces, tension/compression states, critical member identification, and buckling risk. Iteratively refined the truss geometry using the code output to maximize structural efficiency before fabrication.",
     results: "Exceeded the 2 lb load requirement by 35%, sustaining 2.7 lb for 120 seconds before buckling, which demonstrated effective structural optimization through computational analysis prior to physical testing.",
     media: [
-      { type: "image", src: "images/gallery/bu-03-1.jpg", thumb: "images/gallery/bu-03-1-sm.jpg", caption: "My Team and Our Truss" },
-      { type: "image", src: "images/gallery/bu-03-2.jpg", thumb: "images/gallery/bu-03-2-sm.jpg", caption: "MATLAB Result of Our Load and the Effects" }
+      { type: "image", src: "images/gallery/bu-04-1.jpg", thumb: "images/gallery/bu-04-1-sm.jpg", caption: "My Team and Our Truss" },
+      { type: "image", src: "images/gallery/bu-04-2.jpg", thumb: "images/gallery/bu-04-2-sm.jpg", caption: "MATLAB Result of Our Load and the Effects" }
     ]
   },
 
-  "bu-04": {
+  "bu-03": {
     section: "Boston University",
     sectionLink: "projects#bu",
     title: "Rocket Nozzle",
-    image: "images/bu-04.jpg",
+    image: "images/bu-03.jpg",
     tags: ["CAD", "Simulation & Modeling", "Structures", "Testing & Validation"],
     summary: "A bell nozzle designed and stress-tested for operation at 10,000 ft.",
     overview: "Analyzed and designed a bell nozzle optimized for theoretical operation at 10,000 ft altitude, applying rocket propulsion principles to geometry selection, structural validation, and performance optimization.",
     approach: "Selected a bell nozzle configuration based on comparative propulsion research and optimized the contour to 60% for thrust efficiency. Developed a full CAD model in SOLIDWORKS and ran a Finite Element Analysis to identify stress concentrations and structural deformations under high-altitude pressure conditions.",
     results: "The nozzle sustained over 46 PSI of thrust pressure without significant deformation, validated through FEA simulation and a physical static fire test. This confirmed structural integrity and performance viability at target conditions.",
     media: [
-      { type: "video", src: "images/gallery/bu-04-1.mp4", thumb: "images/gallery/bu-04-1-sm.jpg", caption: "Static Fire", poster: "images/gallery/bu-04-1-poster.jpg", duration: 8 },
-      { type: "image", src: "images/gallery/bu-04-2.jpg", thumb: "images/gallery/bu-04-2-sm.jpg", caption: "In-hand Nozzle" },
-      { type: "image", src: "images/gallery/bu-04-3.jpg", thumb: "images/gallery/bu-04-3-sm.jpg", caption: "Preparing for Static Fire" },
-      { type: "image", src: "images/gallery/bu-04-4.jpg", thumb: "images/gallery/bu-04-4-sm.jpg", caption: "FEA of Rocket Nozzle" },
-      { type: "image", src: "images/gallery/bu-04-5.jpg", thumb: "images/gallery/bu-04-5-sm.jpg", caption: "Raw Factor of Safety Plot of Rocket Nozzle" },
-      { type: "image", src: "images/gallery/bu-04-6.jpg", thumb: "images/gallery/bu-04-6-sm.jpg", caption: "Electronic Schematic of Microcontroller" }
+      { type: "video", src: "images/gallery/bu-03-1.mp4", thumb: "images/gallery/bu-03-1-sm.jpg", caption: "Static Fire", poster: "images/gallery/bu-03-1-poster.jpg", duration: 8 },
+      { type: "image", src: "images/gallery/bu-03-2.jpg", thumb: "images/gallery/bu-03-2-sm.jpg", caption: "In-hand Nozzle" },
+      { type: "image", src: "images/gallery/bu-03-3.jpg", thumb: "images/gallery/bu-03-3-sm.jpg", caption: "Preparing for Static Fire" },
+      { type: "image", src: "images/gallery/bu-03-4.jpg", thumb: "images/gallery/bu-03-4-sm.jpg", caption: "FEA of Rocket Nozzle" },
+      { type: "image", src: "images/gallery/bu-03-5.jpg", thumb: "images/gallery/bu-03-5-sm.jpg", caption: "Raw Factor of Safety Plot of Rocket Nozzle" },
+      { type: "image", src: "images/gallery/bu-03-6.jpg", thumb: "images/gallery/bu-03-6-sm.jpg", caption: "Electronic Schematic of Microcontroller" }
     ]
   },
 
@@ -200,6 +200,19 @@ const PROJECTS = {
       { type: "image", src: "images/gallery/bu-05-4.jpg", thumb: "images/gallery/bu-05-4-sm.jpg", caption: "Proposed Piping System" },
       { type: "image", src: "images/gallery/bu-05-5.jpg", thumb: "images/gallery/bu-05-5-sm.jpg", caption: "Presentation Rehearsal" }
     ]
+  },
+
+  "bu-06": {
+    section: "Boston University",
+    sectionLink: "projects#bu",
+    title: "Fidget Toy",
+    image: "images/bu-06.jpg",
+    tags: [],
+    summary: "",
+    overview: "",
+    approach: "",
+    results: "",
+    media: []
   }
 
 };
