@@ -125,7 +125,7 @@ const PROJECTS = {
       { type: "image", src: "images/gallery/bu-01-2.jpg", thumb: "images/gallery/bu-01-2-sm.jpg", caption: "CAD Model of Trash Disposal" },
       { type: "video", src: "images/gallery/bu-01-3.mp4", thumb: "images/gallery/bu-01-3-sm.jpg", caption: "Our Deskinator", poster: "images/gallery/bu-01-3-poster.jpg", duration: 8 },
       { type: "image", src: "images/gallery/bu-01-4.jpg", thumb: "images/gallery/bu-01-4-sm.jpg", caption: "Water-Jet Cut Housing" },
-      { type: "video", src: "images/gallery/bu-01-5.mp4", thumb: "images/gallery/bu-01-5-sm.jpg", caption: "Water-Jet Performing", poster: "images/gallery/bu-01-5-poster.jpg", duration: 8 },
+      { type: "video", src: "images/gallery/bu-01-5.mp4", thumb: "images/gallery/bu-01-5-sm.jpg", caption: "Water-Jet Performing an Operation on Top Housing Shell", poster: "images/gallery/bu-01-5-poster.jpg", duration: 8 },
       { type: "image", src: "images/gallery/bu-01-6.jpg", thumb: "images/gallery/bu-01-6-sm.jpg", caption: "Electronic Schematic" }
     ]
   },
