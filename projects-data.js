@@ -122,7 +122,7 @@ const PROJECTS = {
     tags: ["Sensors & Embedded Systems", "CAD", "Prototyping & Fabrication", "Testing & Validation"],
     summary: "A hands-free robot that clears debris from a 4×4 ft desk in under two minutes.",
     overview: "Planned and constructed an autonomous desk cleaning robot capable of clearing a 4×4 ft surface of debris, rice grains, and paper scraps, without user contact, in under two minutes.",
-    approach: "Integrated ultrasonic sensors programmed for 1-inch edge detection and gesture-based activation. Built a centrifugal blower system with a funnel-to-hose attachment that sucks up debris and leads it into a disposal chamber. Designed a three-wheel drivetrain using dual TT DC motors and a ball caster for stable omnidirectional movement. The housing was modeled in SOLIDWORKS and fabricated through 3D printing and waterjet-cut aluminum.",
+    approach: "Integrated ultrasonic sensors programmed for 1-inch edge detection and gesture-based activation. Built a centrifugal blower system with a funnel-to-hose attachment that sucks up debris and leads it into a disposal chamber. Designed a three-wheel drivetrain using dual TT DC motors and a ball caster for stable differential drive movement. The housing was modeled in SOLIDWORKS and fabricated through 3D printing and waterjet-cut aluminum.",
     results: "Completed full desk cleaning operations in less than the required 2-minute target while successfully collecting rice grains and fine debris, with consistent pickup performance across multiple tests.",
     media: [
       { type: "image", src: "images/gallery/bu-01-1.jpg", thumb: "images/gallery/bu-01-1-sm.jpg", caption: "CAD Model of Funnel for Hose" },
