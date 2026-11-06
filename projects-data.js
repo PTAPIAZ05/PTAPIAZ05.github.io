@@ -130,7 +130,9 @@ const PROJECTS = {
       { type: "video", src: "images/gallery/bu-01-3.mp4", thumb: "images/gallery/bu-01-3-sm.jpg", caption: "Our Deskinator", poster: "images/gallery/bu-01-3-poster.jpg", duration: 8 },
       { type: "image", src: "images/gallery/bu-01-4.jpg", thumb: "images/gallery/bu-01-4-sm.jpg", caption: "Water-Jet Cut Housing" },
       { type: "video", src: "images/gallery/bu-01-5.mp4", thumb: "images/gallery/bu-01-5-sm.jpg", caption: "Water-Jet Performing an Operation on Top Housing Shell", poster: "images/gallery/bu-01-5-poster.jpg", duration: 8 },
-      { type: "image", src: "images/gallery/bu-01-6.jpg", thumb: "images/gallery/bu-01-6-sm.jpg", caption: "Electronic Schematic" }
+      { type: "image", src: "images/gallery/bu-01-6.jpg", thumb: "images/gallery/bu-01-6-sm.jpg", caption: "Electronic Schematic" },
+      { type: "image", src: "images/gallery/bu-01-7.jpg", thumb: "images/gallery/bu-01-7-sm.jpg", caption: "Isometric View of Deskinator" },
+      { type: "image", src: "images/gallery/bu-01-8.jpg", thumb: "images/gallery/bu-01-8-sm.jpg", caption: "Top View of Deskinator" }
     ]
   },
 
@@ -146,7 +148,8 @@ const PROJECTS = {
     approach: "Modeled enclosure components in Onshape and produced them via 3D printing. Programmed an Arduino Uno to handle sensor output, display input, and threshold-based alarm triggering. Designed a custom battery holder to optimize internal component layout and reduce overall inner housing volume.",
     results: "Achieved 98% temperature accuracy within ±0.01°F, operating at 9V compared to the traditional 24V demand of thermostats. Delivered a fully functional handheld prototype with configurable alarm thresholds and an optimized layout.",
     media: [
-      { type: "image", src: "images/gallery/bu-02-1.jpg", thumb: "images/gallery/bu-02-1-sm.jpg", caption: "Inside of the Room Temperature Sensor" }
+      { type: "image", src: "images/gallery/bu-02-1.jpg", thumb: "images/gallery/bu-02-1-sm.jpg", caption: "Inside of the Room Temperature Sensor" },
+      { type: "image", src: "images/gallery/bu-02-2.jpg", thumb: "images/gallery/bu-02-2-sm.jpg", caption: "Top View of Sensor with Temperature Displayed" }
     ]
   },
 
