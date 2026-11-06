@@ -149,7 +149,8 @@ const PROJECTS = {
     results: "Achieved 98% temperature accuracy within ±0.01°F, operating at 9V compared to the traditional 24V demand of thermostats. Delivered a fully functional handheld prototype with configurable alarm thresholds and an optimized layout.",
     media: [
       { type: "image", src: "images/gallery/bu-02-1.jpg", thumb: "images/gallery/bu-02-1-sm.jpg", caption: "Inside of the Room Temperature Sensor" },
-      { type: "image", src: "images/gallery/bu-02-2.jpg", thumb: "images/gallery/bu-02-2-sm.jpg", caption: "Top View of Sensor with Temperature Displayed" }
+      { type: "image", src: "images/gallery/bu-02-2.jpg", thumb: "images/gallery/bu-02-2-sm.jpg", caption: "Top View of Sensor with Temperature Displayed" },
+      { type: "video", src: "images/gallery/bu-02-3.mp4", thumb: "images/gallery/bu-02-3-sm.jpg", caption: "Showcase of Functioning Room Temperature Sensor", poster: "images/gallery/bu-02-3-poster.jpg", duration: 25 }
     ]
   },
 
@@ -217,12 +218,21 @@ const PROJECTS = {
     sectionLink: "projects#bu",
     title: "Mechanical Fidget Device",
     image: "images/bu-06.jpg",
+    imageCaption: "Assembled Fidget Device",
     tags: ["Prototyping & Fabrication"],
     summary: "A multi-part fidget device built with CNC machining, lathe turning, laser cutting, and injection molding.",
     overview: "Designed and manufactured a multi-component mechanical fidget device to demonstrate proficiency across four manufacturing processes: CNC machining, manual lathe turning, laser cutting, and injection molding.",
     approach: "Wrote custom G-code to a CNC machine for a brass knob, and turned a coaster on a manual lathe in two directions. Laser-cut an acrylic base and arm, and counterbored mounting holes for flush screw seating. Integrated a four-way sliding mechanism with aluminum T-nuts moving in opposing directions and injection molded the feet.",
     results: "Assembled a fully functional fidget device with smooth sliding action with all parts fitting without rework.",
-    media: []
+    media: [
+      { type: "video", src: "images/gallery/bu-06-1.mp4", thumb: "images/gallery/bu-06-1-sm.jpg", caption: "Showcase of Functioning Fidget Device", poster: "images/gallery/bu-06-1-poster.jpg", duration: 12 },
+      { type: "video", src: "images/gallery/bu-06-2.mp4", thumb: "images/gallery/bu-06-2-sm.jpg", caption: "CNC Operation", poster: "images/gallery/bu-06-2-poster.jpg", duration: 7 },
+      { type: "image", src: "images/gallery/bu-06-3.jpg", thumb: "images/gallery/bu-06-3-sm.jpg", caption: "Brass Knob which was made on a CNC" },
+      { type: "image", src: "images/gallery/bu-06-4.jpg", thumb: "images/gallery/bu-06-4-sm.jpg", caption: "Coaster which was made on CNC and refined on a Lathe" },
+      { type: "video", src: "images/gallery/bu-06-5.mp4", thumb: "images/gallery/bu-06-5-sm.jpg", caption: "Laser Cutting Operation", poster: "images/gallery/bu-06-5-poster.jpg", duration: 5 },
+      { type: "image", src: "images/gallery/bu-06-6.jpg", thumb: "images/gallery/bu-06-6-sm.jpg", caption: "Laser Cut Acrylic Pieces, Base & Arm" },
+      { type: "image", src: "images/gallery/bu-06-7.jpg", thumb: "images/gallery/bu-06-7-sm.jpg", caption: "Counterbored Holes for Arm" }
+    ]
   }
 
 };
