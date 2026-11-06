@@ -215,13 +215,13 @@ const PROJECTS = {
   "bu-06": {
     section: "Boston University",
     sectionLink: "projects#bu",
-    title: "Fidget Toy",
+    title: "Mechanical Fidget Device",
     image: "images/bu-06.jpg",
-    tags: [],
-    summary: "",
-    overview: "",
-    approach: "",
-    results: "",
+    tags: ["Prototyping & Fabrication"],
+    summary: "A multi-part fidget device built with CNC machining, lathe turning, laser cutting, and injection molding.",
+    overview: "Designed and manufactured a multi-component mechanical fidget device to demonstrate proficiency across four manufacturing processes: CNC machining, manual lathe turning, laser cutting, and injection molding.",
+    approach: "Wrote custom G-code to a CNC machine for a brass knob, and turned a coaster on a manual lathe in two directions. Laser-cut an acrylic base and arm, and counterbored mounting holes for flush screw seating. Integrated a four-way sliding mechanism with aluminum T-nuts moving in opposing directions and injection molded the feet.",
+    results: "Assembled a fully functional fidget device with smooth sliding action with all parts fitting without rework.",
     media: []
   }
 

@@ -4,7 +4,7 @@ automatically on the site (no code editing needed):
   portrait.jpg                          - Home page hero photo
   ndot-01.jpg .. ndot-03.jpg             - NDOT project cards (ndot-03 = Protective Tortoise Fencing & Drainage Systems)
   research-01.jpg, research-02.jpg       - Formal Research cards
-  bu-01.jpg .. bu-06.jpg                 - Boston University cards (B-03 Rocket Nozzle, B-04 Acrylic Truss, B-05 water project, B-06 Fidget Toy)
+  bu-01.jpg .. bu-06.jpg                 - Boston University cards (B-03 Rocket Nozzle, B-04 Acrylic Truss, B-05 water project, B-06 Mechanical Fidget Device)
   ata-01.jpg .. ata-04.jpg               - ATA cards
   hobby-01.jpg .. hobby-03.jpg           - "Outside Hobbies" cards (home page)
   volunteer-01.jpg                       - Volunteering: Nevada Boys State
