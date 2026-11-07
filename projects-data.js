@@ -231,7 +231,9 @@ const PROJECTS = {
       { type: "image", src: "images/gallery/bu-06-4.jpg", thumb: "images/gallery/bu-06-4-sm.jpg", caption: "Coaster which was made on CNC and refined on a Lathe" },
       { type: "video", src: "images/gallery/bu-06-5.mp4", thumb: "images/gallery/bu-06-5-sm.jpg", caption: "Laser Cutting Operation", poster: "images/gallery/bu-06-5-poster.jpg", duration: 5 },
       { type: "image", src: "images/gallery/bu-06-6.jpg", thumb: "images/gallery/bu-06-6-sm.jpg", caption: "Laser Cut Acrylic Pieces, Base & Arm" },
-      { type: "image", src: "images/gallery/bu-06-7.jpg", thumb: "images/gallery/bu-06-7-sm.jpg", caption: "Counterbored Holes for Arm" }
+      { type: "image", src: "images/gallery/bu-06-7.jpg", thumb: "images/gallery/bu-06-7-sm.jpg", caption: "Counterbored Holes for Arm" },
+      { type: "image", src: "images/gallery/bu-06-8.jpg", thumb: "images/gallery/bu-06-8-sm.jpg", caption: "Injection Mold" },
+      { type: "image", src: "images/gallery/bu-06-9.jpg", thumb: "images/gallery/bu-06-9-sm.jpg", caption: "Injection Molded Feet for the Device to Stand Upright" }
     ]
   }
 
